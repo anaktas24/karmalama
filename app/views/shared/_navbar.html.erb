@@ -1,8 +1,21 @@
 <div class="navbar navbar-expand-lg navbar-light navbar-lewagon">
   <div class="container">
     <%= link_to "/", class: "navbar-brand" do %>
-      <%= image_tag "hammertime_logo.png" %>
+      <%= image_tag "lama.jpg" %>
     <% end %>
+    <%= form_with url: listings_path, method: :get, class: "container" do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search"
+      %>
+    <div class="col-6 d-flex  text-center">
+      <button name="button" type="submit" class="btn btn-flat">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+    <%end %>
+
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
