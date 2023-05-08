@@ -1,6 +1,19 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  devise_for :users
+  root to: "pages#home"
+  get '/my_bookings', to: 'bookings#my_bookings'
+  get '/profile', to: 'pages#profile'
+  patch '/profile', to: 'pages#update_profile'
+
+
+
+  resources :listings do
+    resources :bookings do
+      member do
+        patch '/confirm', to: 'bookings#confirm'
+        patch '/reject', to: 'bookings#reject'
+      end
+    end
+  end
 end
