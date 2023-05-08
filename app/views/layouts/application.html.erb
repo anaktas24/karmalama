@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>It's hammertime!</title>
+    <title>KarmaLlama</title>
     <%= favicon_link_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
@@ -17,12 +17,12 @@
 
   <body>
     <%= render "shared/navbar" %>
-    <div class="wrapper page-wrapper">
     <%= render "shared/bottom" %>
+    <div class="wrapper page-wrapper">
       <%= yield %>
     </div>
 
     <%= render "shared/flashes" %>
-    <%= render "shared/footer" %>
+
   </body>
 </html>

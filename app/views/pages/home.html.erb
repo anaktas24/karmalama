@@ -1,6 +1,9 @@
+
 <div class="container homepage-container">
-  <h2 class="text-center">All listings</h2>
+  <h2 class="text-center">All Jobs</h2>
   <%= link_to "Create new listing", new_listing_path, class: "button button-primary" %>
+</div>
+
 <%#
         <li class="dropdown  col-2 text-center btn btn-secondary list-unstyled pt-2">
           Filter by...
@@ -23,7 +26,6 @@
             <%# <%= link_to "Least recent", root_path(order_by: :created_at, order: :asc), class: "dropdown-item btn btn-secondary" %>
           <%# </div>
         </li>  %>
-</div>
 <%# Iterate over ALL listings from ALL users - ordered by date created - creating a card for each listing %>
   <%# Iterate over listings for current_user %>
   <div class="row gx">
@@ -31,4 +33,3 @@
       <div class="col-sm-6 col-md-4 col-lg-3"><%= render 'shared/card', listing: listing %></div>
     <% end  %>
   </div>
-</div>
