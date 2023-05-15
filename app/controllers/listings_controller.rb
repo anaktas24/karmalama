@@ -14,15 +14,15 @@ class ListingsController < ApplicationController
   def show
     @listing = Listing.find(params[:id])
     authorize @listing
-    @markers = [ {lat: @listing.latitude,
-                  lng: @listing.longitude,
-                  info_window: render_to_string(partial: "info_window", locals: {listing: @listing})
-                },
-                { lat: current_user.latitude,
-                  lng: current_user.longitude,
-                  info_window: "<br><p>Your location</p>"
-                }
-              ]
+    # @markers = [ {lat: @listing.latitude,
+    #               lng: @listing.longitude,
+    #               info_window: render_to_string(partial: "info_window", locals: {listing: @listing})
+    #             },
+    #             { lat: current_user.latitude,
+    #               lng: current_user.longitude,
+    #               info_window: "<br><p>Your location</p>"
+    #             }
+    #           ]
     @booking = Booking.new # can't figure this out.... trying to create new booking through the listings > show page
   end
 
@@ -72,7 +72,6 @@ class ListingsController < ApplicationController
         format.html { redirect_to listings_path, notice: "Listing was successfully deleted." }
         format.json { head :no_content }
       else
-        binding.irb
         format.html { redirect_to listing_path, status: :unprocessable_entity, notice: "Listing could not be deleted." }
         format.json { render json: @listing.errors, status: :unprocessable_entity }
         # need to check these erroes works (no validations)

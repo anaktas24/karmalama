@@ -125,20 +125,7 @@ body {
   background-color: #3A9691;
 }
 
-.btn, .btn::after {
-  width: 200px;
-  height: 40px;
-  font-size: 12px;
-  font-family: 'Bebas Neue', cursive;
-  background: linear-gradient(45deg, transparent 5%, #3A9691 5%);
-  border: 0;
-  color: #fff;
-  letter-spacing: 3px;
-  line-height: 15px;
-  box-shadow: 6px 0px 0px #087d43;
-  outline: transparent;
-  position: relative;
-}
+
 
 .buttons {
   .left {

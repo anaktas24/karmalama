@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :home
+  # skip_before_action :authenticate_user!, only: :home
 
   def home
     if user_signed_in?
@@ -12,7 +12,6 @@ class PagesController < ApplicationController
     @listings = Listing.where(category_type: params[:query]) if params[:query].present?
 
     @listings = Listing.order(params[:order_by] => params[:order]) if params[:order_by].present?
-
   end
 
   def profile
