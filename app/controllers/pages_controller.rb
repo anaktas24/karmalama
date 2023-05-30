@@ -27,6 +27,16 @@ class PagesController < ApplicationController
     end
   end
 
+  # My assignments page
+
+  def my_assignments
+    if user_signed_in?
+      redirect_to my_assignments_path
+    else
+      redirect_to home_path
+    end
+  end
+
   private
 
   def user_params

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/my_bookings', to: 'bookings#my_bookings'
   get '/profile', to: 'pages#profile'
   patch '/profile', to: 'pages#update_profile'
+  get '/my_assignments', to: 'pages#my_assignments'
 
 
 
