@@ -1,12 +1,85 @@
+<header>
+  <div class="wrapper">
+    <nav>
+      <div class="logo">
+        <img src="../../assets/images/Karmalama-logo.png" alt="Logo">
+      </div>
+    </nav>
+    <!--End of Nav-->
+    <div class="h2">
+      <h2>Finde Unterstützungsmöglichkeiten <br /> in deiner Umgebung!</h2>
+    </div>
+    <div class="filters">
+      <div class="content">
+        <div>
+          <img src="../../assets/heart-white.svg" alt="Wishlist">
+          <a href="#" class="btn light">Wishlist</a>
+        </div>
+        <div>
+          <img src="../../assets/clock.svg" alt="Urgent">
+          <a href="#" class="btn light">Urgent Tasks</a>
+        </div>
+        <div>
+          <img src="../../assets/globe-earth.svg" alt="Flight">
+          <a href="#" class="btn light">Flight & Migration</a>
+        </div>
+        <div>
+          <img src="../../assets/tree.svg" alt="Nature">
+          <a href="#" class="btn light">Environment & Nature</a>
+        </div>
+        <div>
+          <img src="../../assets/humanity.svg" alt="People">
+          <a href="#" class="btn light">People</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!--End of header section-->
 
-<div class="container homepage-container">
+
+<!--If already register dont display it-->
+<% if user_signed_in? %>
+  <div class="wrapper">
+    <div class="register">
+      <%= link_to "Register", destroy_user_session_path, :method => :delete if user_signed_in? %>
+      <a href="#" class="btn light">Register</a>
+      <%= link_to "Login", destroy_user_session_path, :method => :delete if user_signed_in? %>
+      <a href="#" class="btn light">Login</a>
+    </div>
+  </div>
+<% else %>
+  <%= link_to "Login", new_user_session_path, class: "register"  %>
+  <%= link_to "Register", new_user_session_path, class: "register"  %>
+<% end %>
+
+
+
+
+<!--Listings-->
+<div class="cards-listings">
+  <div class="wrapper">
+    <div class="row gx">
+      <% @listings.each do |listing| %>
+        <div class="col-sm-6 col-md-4 col-lg-3"><%= render 'shared/card', listing: listing %></div>
+      <% end  %>
+    </div>
+  </div>
+</div>
+<!--End of Listings-->
+
+
+
+
+
+
+
+
+<%# <div class="container homepage-container">
   <h2 class="text-center">All Jobs</h2>
   <%= link_to "Create new listing", new_listing_path, class: "button button-primary" %>
-</div>
-<div class="x7 screen">
-  <div class="overlap-group7">
-    <div class="rectangle-41907 rectangle">
-</div>
+<%# </div> %>
+
 <%#
         <li class="dropdown  col-2 text-center btn btn-secondary list-unstyled pt-2">
           Filter by...
@@ -31,8 +104,3 @@
         </li>  %>
 <%# Iterate over ALL listings from ALL users - ordered by date created - creating a card for each listing %>
   <%# Iterate over listings for current_user %>
-  <div class="row gx">
-    <% @listings.each do |listing| %>
-      <div class="col-sm-6 col-md-4 col-lg-3"><%= render 'shared/card', listing: listing %></div>
-    <% end  %>
-  </div>

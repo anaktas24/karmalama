@@ -1,3 +1,22 @@
+:root{
+  --pink-color: #F37A8E;
+  --light-pink-color: #F7A8B5;
+  --blue-color: #366d9f;
+  --light-blue-color: #366D9F;
+  --purple-color: #310064;
+  --light-purple-color: #310064;
+  --grey-color: #F3F3F3;
+  --light-grey-color: #E8E8E8;
+}
+
+
+
+
+
+
+
+
+
 body {
   background: rgb(241, 240, 255);
   font-family: europa-regularregular, sans-serif;
