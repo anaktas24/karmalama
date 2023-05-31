@@ -1,0 +1,133 @@
+
+
+<!--
+<header>
+
+  <div class="wrapper">
+    <div class="banner">
+      <div class="logo-container">
+        <img src="../../assets/Karmalama-logo.png" alt="Logo" class="logo">
+      </div>
+      <div class="heading-container">
+        <h2 class="heading">Finde Unterstützungsmöglichkeiten <br /> in deiner Umgebung!</h2>
+      </div>
+    </div>
+
+    <div class="filters">
+      <div class="content">
+        <nav>
+          <ul>
+            <li>
+              <a href="#" class="btnn">
+                <div class="circle-heart">
+                  <img src="../../assets/heart-white.svg" alt="Wishlist">
+                </div>
+                  <p>Wishlist</p>
+              </a>
+            </li>
+            <li>
+                <a href="#" class="btnn">
+                <div class="circle">
+                  <img src="../../assets/clock.svg" alt="Urgent">
+                </div>
+                  <p>Urgent Tasks</p>
+                </a>
+            </li>
+            <li>
+              <a href="#" class="btnn">
+                <div class="circle">
+                  <img src="../../assets/globe-earth.svg" alt="Flight">
+                </div>
+                  <span></span><p>Flight & Migration</p></span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="btnn">
+                <div class="circle">
+                  <img src="../../assets/tree.svg" alt="Nature">
+                </div>
+                  <p>Environment & Nature</p>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="btnn">
+                <div class="circle">
+                  <img src="../../assets/humanity.svg" alt="People">
+                </div>
+                  <p>People</p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+<% if user_signed_in? %>
+  <div class="wrapper">
+    <div class="register">
+      <%= link_to "Register", destroy_user_session_path, :method => :delete if user_signed_in? %>
+      <a href="#" class="btn light">Register</a>
+      <%= link_to "Login", destroy_user_session_path, :method => :delete if user_signed_in? %>
+      <a href="#" class="btn light">Login</a>
+    </div>
+  </div>
+<% else %>
+  <%= link_to "Login", new_user_session_path, class: "register"  %>
+  <%= link_to "Register", new_user_session_path, class: "register"  %>
+<% end %>
+
+
+
+
+
+<div class="cards-listings">
+  <div class="wrapper">
+    <div class="row gx">
+      <% @listings.each do |listing| %>
+        <%# <div class="col-sm-6 col-md-4 col-lg-3"><%= render 'shared/card', listing: listing %></div>
+      <%# <% end  %>
+    <%# </div>
+  </div>
+</div> %>
+
+
+
+
+
+
+
+
+
+<%# <div class="container homepage-container">
+  <h2 class="text-center">All Jobs</h2>
+  <%= link_to "Create new listing", new_listing_path, class: "button button-primary" %>
+<%# </div> %>
+
+<%#
+        <li class="dropdown  col-2 text-center btn btn-secondary list-unstyled pt-2">
+          Filter by...
+          <%= image_tag "", class: "dropdown-toggle ", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%# <div class="dropdown-menu dropdown-menu-end " aria-labelledby="navbarDropdown">
+            <%= link_to "Electronic", root_path(query:"Electronic"), class: "dropdown-item btn btn-secondary" %>
+            <%# <%= link_to "Manual", root_path(query:"Manual"), class: "dropdown-item btn btn-secondary" %>
+            <%# <%= link_to "Gas-powered", root_path(query:"Gas-powered"), class: "dropdown-item btn btn-secondary" %>
+            <%# <%= link_to "Other", root_path(query:"Other"), class: "dropdown-item btn btn-secondary" %>
+          <%# </div> %>
+        <%# </li>
+
+        <%# <li class="dropdown col-2 d-flex text-center btn btn-secondary list-unstyled pt-2">
+          Sort by...
+          <%= image_tag "", class: "dropdown-toggle ", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%# <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= link_to "Price (High to low)", root_path(order_by: :price_per_hour, order: :desc), class: "dropdown-item btn btn-secondary" %>
+            <%# <%= link_to "Price (Low to high)", root_path(order_by: :price_per_hour, order: :asc), class: "dropdown-item btn btn-secondary" %>
+            <%# <%= link_to "Most recent", root_path(order_by: :created_at, order: :desc), class: "dropdown-item btn btn-secondary" %>
+            <%# <%= link_to "Least recent", root_path(order_by: :created_at, order: :asc), class: "dropdown-item btn btn-secondary" %>
+          <%# </div>
+        </li>  %>
+<%# Iterate over ALL listings from ALL users - ordered by date created - creating a card for each listing %>
+  Iterate over listings for current_user
