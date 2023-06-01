@@ -6,11 +6,27 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
+    <h3>Personal Details</h3>
+    <br>
+      <%= f.input :name,
+                  require: true%>
+      <%= f.input :surname,
+                  require: true%>
+      <%= f.input :birthday,
+                  require: true%>
+      <%= f.input :phone,
+                  require: true%>
+      <h3>Location Details</h3>
+      <%= f.input :postal,
+                  require: true%>
+      <h3>Account Details</h3>
+      <%= f.input :area,
+                  require: true%>
       <%= f.input :email,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" }%>
-      <%= f.input :address,
+      <%# <%= f.input :address,
                   required: true %>
       <%= f.input :password,
                   required: true,
