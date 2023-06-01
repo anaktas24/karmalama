@@ -1,26 +1,149 @@
-<div class="card-trip">
-  <div class="col card-component text-decoration-none">
-    <%# <img class="d-block w-100 image" src="https://random.imagecdn.app/100/150" alt="First slide"> %>
-    <% if listing.photo.attached? %>
-        <%= cl_image_tag listing.photo.key, width: 50, height: 50, crop: :fill %>
-      <% end %>
+<div>
+  <link href="./component23.css" rel="stylesheet" />
+  <div class="component23-container">
+    <div class="col component23-component23">
+      <img
+        src="/rectangle41904i283-v2dh.svg"
+        alt="Rectangle41904I283"
+        class="component23-rectangle41904"
+      />
+      <div class="component23-lightningthunderfastswift1">
+        <div class="component23-group">
+          <div class="component23-group01">
+            <img
+              src="../../assets/lightning.svg"
+              alt="VectorI283"
+              class="component23-vector"
+            />
+          </div>
+        </div>
+      </div>
+      <span class="component23-text"><span><%= listing.date %></span></span>
+      <div class="component23-calendar3range1">
+        <div class="component23-group02">
+          <div class="component23-group03">
+            <img
+              src="../../assets/calendar-black.svg"
+              alt="VectorI283"
+              class="component23-vector01"
+            />
+          </div>
+        </div>
+      </div>
+      <span class="component23-text02">
+        <span><%= listing.location %></span>
+      </span>
+      <div class="component23-locationpinmap2">
+        <div class="component23-group04">
+          <div class="component23-group05">
+            <img
+              src="/vectori283-dbuk.svg"
+              alt="VectorI283"
+              class="component23-vector03"
+            />
+            <img
+              src="../../assets/location-black.svg"
+              alt="VectorI283"
+              class="component23-vector04"
+            />
+          </div>
+        </div>
+      </div>
+      <span class="component23-text04"><span>Grüne Stadt Zürich</span></span>
+      <div class="component23-building21">
+        <div class="component23-group06">
+          <div class="component23-group07">
+            <img
+              src="../../assets/building-black.svg"
+              alt="VectorI283"
+              class="component23-vector05"
+            />
+            <img
+              src="/vectori283-d8i.svg"
+              alt="VectorI283"
+              class="component23-vector06"
+            />
+          </div>
+        </div>
+      </div>
+      <span class="component23-text06"><span><%= listing.name %></span></span>
+      <img
+        <% if listing.photo.attached? %>
+          <%= cl_image_tag listing.photo.key, width: 50, height: 50, crop: :fill %>
+        <% end %>
+        alt="Rectangle41905I283"
+        class="component23-rectangle41905"
+      />
+      <div class="component23-frame3">
+        <div class="component23-frame1">
+          <span class="component23-text08"><span><%= listing.category_type%></span></span>
+        </div>
+        <div class="component23-frame2">
+          <span class="component23-text10"><span><%= listing.category_type%></span></span>
+        </div>
+      </div>
+      <div class="component23-group6883">
+        <div class="component23-heart1">
+          <div class="component23-group08">
+            <div class="component23-group09">
+              <img
+                src="../../assets/heart-white.svg"
+                alt="VectorI283"
+                class="component23-vector07"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="component23-group6884">
+        <img
+          src="/ellipse1186i283-z7oo-200h.png"
+          alt="Ellipse1186I283"
+          class="component23-ellipse1186"
+        />
+        <div class="component23-group6947">
+          <img
+            src="/ll4i283-k6di-200h.png"
+            alt="ll4I283"
+            class="component23-ll4"
+          />
+          <div class="component23-maskgroup">
+            <img
+              src="/image4i283-w94q-200h.png"
+              alt="image4I283"
+              class="component23-image4"
+            />
+          </div>
+          <img
+            src="/ll5i283-lbv9-200h.png"
+            alt="ll5I283"
+            class="component23-ll5"
+          />
+        </div>
+        <span class="component23-text12"><span><%= listing.price_per_hour.to_i.round(2) %></span></span>
+        <div class="component23-timerclock1">
+          <div class="component23-group10">
+            <div class="component23-group11">
+              <img
+                src="/vectori283-aman.svg"
+                alt="VectorI283"
+                class="component23-vector08"
+              />
+              <img
+                src="../../assets/timer.svg"
+                alt="VectorI283"
+                class="component23-vector09"
+              />
+            </div>
+          </div>
+        </div>
+        <img
+          src="/line7i283-vje.svg"
+          alt="Line7I283"
+          class="component23-line7"
+        />
+      </div>
+      <%= link_to '', listing_path(listing), class: 'card-link' %>
+    </div>
   </div>
-  <div class="card ">
-    <div class="card-header card-location-height">
-      <i class="fa-solid fa-location-pin "></i> <%= listing.location %>
-    </div>
-    <div class="card-body card-title-height">
-      <h4 class="card-title"><%= listing.name %></h4>
-    </div>
-    <div class="card-body card-body-height">
-      <p class="card-text card-body-description"><%= listing.description %></p>
-    </div>
-    <div class="card-body pb-0">
-      <p class="card-text card-body-description"><%= listing.category_type%></p>
-    </div>
-    <div class="card-body card-price-height">
-      <p class="card-text"><i class="fa-sharp fa-solid fa-sack-dollar"></i> Per hour: <br><%= listing.price_per_hour.to_i.round(2) %> CHF</p>
-    </div>
-  </div>
-  <%= link_to '', listing_path(listing), class: 'card-link' %>
 </div>

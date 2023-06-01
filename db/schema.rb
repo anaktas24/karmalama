@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_24_142608) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_01_150522) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_142608) do
     t.float "latitude"
     t.float "longitude"
     t.enum "category_type", default: "Other", null: false, enum_type: "category"
+    t.date "date"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 

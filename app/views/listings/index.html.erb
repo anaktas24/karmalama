@@ -1,23 +1,38 @@
 <div class="container homepage-container">
 
-  <h2 class="text-center">My listings</h2>
-
-  <%= link_to "Create new listing", new_listing_path, class: "button button-primary" %>
-  <hr>
-  <%# Iterate over listings for current_user %>
-
-  <div class="row">
-  <div>
-    <%= form_with url: listings_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a listing"
-      %>
-      <%= submit_tag "Search", class: "button button-primary" %>
-    <% end %>
+<h2 class="text-center">My listings</h2>
+  <div class="text-center px-5">
+    <%= link_to "Create new listing", new_listing_path, class: "button button-primary w-100" %>
+    <hr>
   </div>
 
+  <div class="w-100">
+
+    <div class="row my-3">
+      <div class="col-7">
+        <%= form_with url: listings_path, method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a listing"
+        %>
+      </div>
+
+      <div class="text-center col-3">
+        <button name="button" type="submit" class="button button-primary w-100">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+
+      <div class="text-center col-2">
+        <%= link_to "Clear", listings_path, class: "button button-primary" %>
+      </div>
+
+    </div>
+  </div>
+  <% end %>
+
+  <div class="row gx">
     <% @listings.each do |listing| %>
         <div class="col-sm-6 col-md-4 col-lg-3"><%= render 'shared/card', listing: listing %></div>
     <% end  %>

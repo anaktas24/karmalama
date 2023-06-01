@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :confirm, :reject]
+  attribute :date, :datetime
 
   def index
     @listing = Listing.find(params[:listing_id])
