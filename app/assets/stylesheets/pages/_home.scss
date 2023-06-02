@@ -534,6 +534,16 @@
 
 
 //Logo
+.signed-in{
+  top: -23px;
+
+  width: 34px;
+  height: 65px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
 .frame71-component13 {
   top: 72px;
   left: 30px;
