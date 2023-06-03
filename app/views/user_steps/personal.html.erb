@@ -1,0 +1,20 @@
+<%= form_for @user, url: wizard_path do |f| %>
+  <h2>Tell us about yourself</h2>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_birth %><br />
+    <%= f.text_field :date_of_birth, start_year: 1900, end_year: Date.today.year %>
+  </div>
+  <div class="field">
+    <%= f.label :bio %><br />
+    <%= f.text_field :bio, rows: 5 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Continue" %>
+    or <%= link_to "skip this step", next_wizard_path%>
+  </div>
+<% end %>
