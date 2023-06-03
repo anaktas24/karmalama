@@ -165,11 +165,17 @@
 
       </div>
       <!--Register,Login-->
+
       <% unless user_signed_in? %>
         <div class="frame71-group6887">
           <div class="frame71-group6885">
             <div class="frame71-signupbtn"></div>
-            <span class="frame71-text49"><%= link_to 'Register', new_user_registration_path %></span>
+            <%# <span class="frame71-text49"><%= link_to 'Register', sign_up_information_path %>
+
+
+
+
+</span>
           </div>
           <div class="frame71-group6886">
             <div class="frame71-signupbtn1"></div>
@@ -177,18 +183,15 @@
           </div>
         <% end %>
       </div>
-
-
-
     </div>
   </div>
-      <div class="cards-listings">
-        <div class="wrapper">
-          <div class="row gx">
-            <% @listings.each do |listing| %>
-              <div class="col-sm-6 col-md-4 col-lg-3"><%= render 'shared/card', listing: listing %></div>
-            <% end  %>
-          </div>
-        </div>
+  <div class="cards-listings">
+    <div class="wrapper">
+      <div class="row gx">
+        <% @listings.each do |listing| %>
+          <div class="col-sm-6 col-md-4 col-lg-3"><%= render 'shared/card', listing: listing %></div>
+        <% end  %>
       </div>
+    </div>
+  </div>
 </div>

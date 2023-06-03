@@ -43,7 +43,13 @@
       </div>
       <div class="frame14-group6925button">
         <div class="frame14-signupbtn2">
-          <span class="frame14-text06"><span>Log out</span></span>
+          <span class="frame14-text06"><span>      <% if user_signed_in? %>
+  <%= form_tag(destroy_user_session_path, method: :delete) do %>
+    <%= submit_tag 'Log Out', class: 'logout-button' %>
+  <% end %>
+<% end %>
+
+</span></span>
         </div>
       </div>
       <div class="frame14-group6927">
