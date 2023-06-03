@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
 
-  Rails.application.routes.draw do
-    devise_for :users, controllers: { registrations: 'registrations' }
-
-
-  end
-
+  resources :users
+  resources :user_steps
   root to: "pages#home"
   get '/my_bookings', to: 'bookings#my_bookings'
   get '/profile', to: 'pages#profile'
