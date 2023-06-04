@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  has_many :profile
-
   # personal details
   validates :name, presence: true
   validates :surname, presence: true

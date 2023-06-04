@@ -1,0 +1,15 @@
+<%= form_for(@user, url: create_account_details_registration_path) do |f| %>
+  <%= f.label :interests %>
+  <%= f.text_field :interests %>
+  <%# <%= f.error_message_on :interests %>
+
+  <%= f.label :languages %>
+  <%= f.text_field :languages %>
+  <%# <%= f.error_message_on :languages %>
+
+  <%= f.label :skills %>
+  <%= f.text_field :skills %>
+  <%# <%= f.error_message_on :skills %>
+
+  <%= f.submit 'Sign Up' %>
+<% end %>

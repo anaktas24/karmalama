@@ -1,0 +1,19 @@
+<%= form_for(@user, url: create_personal_info_registration_path) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%# <%= f.error_message_on :name %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <%# <%= f.error_message_on :email %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%# <%= f.error_message_on :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+  <%# <%= f.error_message_on :password_confirmation %>
+
+  <%= f.submit 'Next' %>
+<% end %>
