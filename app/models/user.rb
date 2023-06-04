@@ -4,13 +4,10 @@ class User < ApplicationRecord
   validates :surname, presence: true
   validates :phone, presence: true
   validates :birthday, presence: true
-
   # location details
   validates :postal, presence: true
   validates :area, presence: true
-
   # account details
-
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
@@ -28,6 +25,9 @@ class User < ApplicationRecord
   validates :interests, presence: true
   validates :skillset, presence: true
   validates :language_skills, presence: true
+
+
+
 
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable

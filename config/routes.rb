@@ -1,14 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
 
   devise_scope :user do
-    get '/sign_up/personal_info', to: 'registrations#personal_info', as: :personal_info_registration
-    post '/sign_up/create_personal_info', to: 'registrations#create_personal_info', as: :create_personal_info_registration
-    get '/sign_up/photo', to: 'registrations#photo', as: :photo_registration
-    post '/sign_up/create_photo', to: 'registrations#create_photo', as: :create_photo_registration
-    get '/sign_up/account_details', to: 'registrations#account_details', as: :account_details_registration
-    post '/sign_up/create_account_details', to: 'registrations#create_account_details', as: :create_account_details_registration
+    get '/sign_up/personal_info', to: 'users/registrations#personal_info', as: :new_user_registration_personal_info
+    post '/sign_up/personal_info', to: 'users/registrations#create_personal_info', as: :create_user_registration_personal_info
+    get '/sign_up/photo', to: 'users/registrations#photo', as: :new_user_registration_photo
+    post '/sign_up/photo', to: 'users/registrations#create_photo', as: :create_user_registration_photo
+    get '/sign_up/account_details', to: 'users/registrations#account_details', as: :new_user_registration_account_details
+    post '/sign_up/account_details', to: 'users/registrations#create_account_details', as: :create_user_registration_account_details
   end
+
+
+
 
   root to: "pages#home"
   get '/my_bookings', to: 'bookings#my_bookings'
