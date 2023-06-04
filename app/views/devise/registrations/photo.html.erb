@@ -1,8 +1,0 @@
-<%= form_for(@user, url: create_user_registration_photo_path) do |f| %>
-
-  <%= f.label :photo %>
-  <%= f.file_field :photo %>
-  <%# <%= f.error_message_on :photo %>
-
-  <%= f.submit 'Next' %>
-<% end %>

@@ -12,7 +12,8 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "geocoder"
 gem "cloudinary"
-gem "devise"
+gem 'devise'
+
 gem "wicked"
 
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
