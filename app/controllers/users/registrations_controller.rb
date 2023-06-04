@@ -51,12 +51,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
         sign_in(@user)
         redirect_to root_path
       else
-        render 'devise/registrations/account_details'
+        redirect_to new_user_registration_account_details_path, flash: { error: "Failed to create account. Please try again." }
       end
     else
       render 'devise/registrations/account_details'
     end
   end
+
+
 
   private
 
@@ -69,6 +71,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def account_details_params
-    params.require(:user).permit(:interests, :skillset, language_skills: [])
+    params.require(:user).permit(:interests, :skillset, language_skills: []).tap do |whitelisted|
+      whitelisted[:interests] = params[:user][:interests].split(",") if params[:user][:interests]
+      whitelisted[:skillset] = params[:user][:skillset].split(",") if params[:user][:skillset]
+    end
   end
+
+
 end
