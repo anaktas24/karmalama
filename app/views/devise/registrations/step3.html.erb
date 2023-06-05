@@ -1,0 +1,8 @@
+<%= form_with(model: @user, url: new_user_registration_path, method: :post) do |form| %>
+  <%= form.hidden_field :step, value: @step %>
+  <!-- Rest of the form fields -->
+  <%= form.submit "Complete Registration" %>
+<% end %>
+
+<!-- Link to step 2 -->
+<%= link_to "Previous", new_user_registration_path(user: { step: 2 }) %>
