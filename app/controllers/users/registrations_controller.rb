@@ -23,28 +23,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
   def create
-    @step = params.dig(:user, :step).to_i || 1
-
-    case @step
+    case params[:user][:step].to_i
     when 1
       session[:user_step1_params] = user_params
       redirect_to new_user_registration_path(user: { step: 2 }) and return
     when 2
-      @user = User.new(session[:user_step1_params].merge(user_params)) if session[:user_step1_params]
+      @user = User.new(session[:user_step1_params]) if session[:user_step1_params]
 
       if @user && @user.valid?
         session[:user_step2_params] = user_params
         redirect_to new_user_registration_path(user: { step: 3 }) and return
       else
-        @user ||= User.new
-        flash.now[:alert] = "Please provide valid information."
         render 'step2'
+
       end
     when 3
       if session[:user_step1_params].is_a?(Hash) && session[:user_step2_params].is_a?(Hash)
-        @user = User.new(session[:user_step1_params].merge(session[:user_step2_params])) if session[:user_step1_params] && session[:user_step2_params]
+        @user = User.new(session[:user_step1_params].merge(session[:user_step2_params]))
 
         if @user && @user.valid?
+          if params[:user][:picture].present?
+            # Assign the picture to the user's profile attribute
+            @user.profile.picture = params[:user][:picture]
+          end
+
           @user.save
           session[:user_step1_params] = nil
           session[:user_step2_params] = nil
@@ -55,13 +57,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
         end
       end
 
-      # If user creation fails or session data is missing, render step3
-      @user ||= User.new
-      render 'step3'
+      render turbo_stream: turbo_stream.replace('registration-form', partial: 'step3_form', locals: { user: @user })
     else
-      redirect_to new_user_registration_path(user: { step: 1 }) and return
+      redirect_to root_path
     end
   end
+
+
+
+
 
 
 
