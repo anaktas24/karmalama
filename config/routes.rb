@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
   }
 
 
@@ -18,8 +19,6 @@ Rails.application.routes.draw do
   post '/users/step2', to: 'users/registrations#process_step2', as: 'process_step2_user_registration'
 
   get '/users/step3', to: 'users/registrations#step3', as: 'step3_user_registration'
-  post '/users/step3', to: 'users/registrations#process_step3', as: 'process_step3_user_registration'
-
 
 
   resources :listings do

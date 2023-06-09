@@ -25,13 +25,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     case @step
     when 1
       session[:user_step1_params] = user_params
-      redirect_to new_user_registration_path(user: { step: 2 })
+      redirect_to new_user_registration_path(user: { step: 2 }) and return
     when 2
       @user = User.new(session[:user_step1_params].merge(user_params)) if session[:user_step1_params]
 
       if @user && @user.valid?
         session[:user_step2_params] = user_params
-        redirect_to new_user_registration_path(user: { step: 3 })
+        redirect_to new_user_registration_path(user: { step: 3 }) and return
       else
         @user ||= User.new
         render 'step2'
@@ -40,21 +40,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user = User.new(session[:user_step1_params].merge(session[:user_step2_params])) if session[:user_step1_params] && session[:user_step2_params]
 
       if @user && @user.valid?
-        if @user.save
-          session[:user_step1_params] = nil
-          session[:user_step2_params] = nil
-          redirect_to root_path
-        else
-          render 'step3'
-        end
+        @user.save
+        session[:user_step1_params] = nil
+        session[:user_step2_params] = nil
+        redirect_to root_path and return
       else
-        @user ||= User.new
         render 'step3'
       end
     else
-      redirect_to new_user_registration_path(user: { step: 1 })
+      redirect_to new_user_registration_path(user: { step: 1 }) and return
     end
   end
+
+
+
+
+
+
 
   private
 

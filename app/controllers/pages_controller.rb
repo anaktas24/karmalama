@@ -14,29 +14,6 @@ class PagesController < ApplicationController
     @listings = Listing.order(params[:order_by] => params[:order]) if params[:order_by].present?
   end
 
-  def profile
-    @user = current_user || User.new
-  end
-
-  def update_profile
-    @user = current_user
-    if @user.update(user_params)
-      redirect_to profile_path
-    else
-      render :profile
-    end
-  end
-
-  # My assignments page
-
-  def my_assignments
-    if user_signed_in?
-      redirect_to my_assignments_path
-    else
-      redirect_to root_path
-    end
-  end
-
   private
 
   def user_params

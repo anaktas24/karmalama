@@ -171,16 +171,13 @@
           <div class="frame71-group6885">
             <div class="frame71-signupbtn"></div>
             <span class="frame71-text49">
-            <%# <%= link_to 'Register', new_user_registration_personal_info_path %>
-
-
-
-
-</span>
+            <!-- Register -->
+              <%= link_to "Register", new_user_registration_path(user: { step: 1 })%></span>
           </div>
           <div class="frame71-group6886">
             <div class="frame71-signupbtn1"></div>
-            <span class="frame71-text51"><span>Login</span></span>
+            <!--Login-->
+            <span class="frame71-text51"><%= link_to "Login", new_user_session_path %></span>
           </div>
         <% end %>
       </div>
