@@ -162,6 +162,11 @@
       </div>
       </div>
       <div class="frame14-group69571">
+        <% if current_user.picture.attached? %>
+        <%= image_tag current_user.picture.variant(resize: "200x200") %>
+      <% else %>
+        <p>No picture available</p>
+      <% end %>
         <span class="frame14-text43"><span><%= current_user.name %></p></span></span>
 
       </div>

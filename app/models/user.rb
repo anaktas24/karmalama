@@ -2,18 +2,14 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   attr_accessor :step
-
   devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :validatable
-  # personal details first step
-  validates :name, :surname, :phone, :birthday, :postal, :area, presence: true
-  # account details
+  :recoverable, :rememberable, :validatable
+  validates :name, :surname, :phone, :birthday, :postal, :area, :picture, presence: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+  has_one_attached :picture
 
-  # # photo second step
-  # validates :photo, presence: true
 
   # # interests etc. third step
   # INTEREST_CATEGORIES = ['Movies', 'Sports', 'Music', 'Books', 'Travel'].freeze

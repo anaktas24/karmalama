@@ -29,11 +29,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     when 2
       @user = User.new(session[:user_step1_params].merge(user_params)) if session[:user_step1_params]
 
-      if @user && @user.valid?
+      if @user && @user.valid? && params[:user][:picture].present?
+        @user.picture.attach(params[:user][:picture])
+
         session[:user_step2_params] = user_params
         redirect_to new_user_registration_path(user: { step: 3 }) and return
       else
         @user ||= User.new
+        flash.now[:alert] = "Please provide a picture."
         render 'step2'
       end
     when 3
@@ -44,6 +47,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         sign_in(@user)
         session[:user_step1_params] = nil
         session[:user_step2_params] = nil
+        flash[:notice] = "Registration completed successfully!"
         redirect_to root_path and return
       else
         render 'step3'
@@ -52,12 +56,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to new_user_registration_path(user: { step: 1 }) and return
     end
   end
-
-
-
-
-
-
 
   private
 
