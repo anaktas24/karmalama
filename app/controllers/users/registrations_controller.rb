@@ -41,6 +41,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
       if @user && @user.valid?
         @user.save
+        sign_in(@user)
         session[:user_step1_params] = nil
         session[:user_step2_params] = nil
         redirect_to root_path and return
@@ -61,10 +62,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :name, :surname, :phone, :birthday, :postal, :area, :step])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :name, :surname, :phone, :birthday, :postal, :area, :step, :picture])
   end
 
+
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name, :surname, :phone, :birthday, :postal, :area, :step)
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :surname, :phone, :birthday, :postal, :area, :step, :picture)
   end
 end

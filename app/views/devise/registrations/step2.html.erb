@@ -1,20 +1,12 @@
 <h1>Step 2: Additional Information</h1>
 
 <%= form_with(model: @user, url: user_registration_path, method: :post) do |f| %>
-  <div class="field">
-    <%= f.label :birthday %>
-    <%= f.date_field :birthday %>
+
+  <div class="form-group">
+    <%= f.label :Photo, 'Upload Photo' %>
+    <%= f.file_field :picture %>
   </div>
 
-  <div class="field">
-    <%= f.label :postal %>
-    <%= f.text_field :postal %>
-  </div>
-
-  <div class="field">
-    <%= f.label :area %>
-    <%= f.text_field :area %>
-  </div>
 
   <%= f.hidden_field :step, value: 2 %>
 

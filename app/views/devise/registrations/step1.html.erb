@@ -1,6 +1,8 @@
-<h1>Step 1: Personal Information</h1>
+<h1>Basic Registration</h1>
 
 <%= form_with(model: @user, url: user_registration_path, method: :post) do |f| %>
+  <h3>Personal details</h3>
+  <hr>
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -12,10 +14,28 @@
   </div>
 
   <div class="field">
-    <%= f.label :phone %>
+    <%= f.label :phone_Number %>
     <%= f.text_field :phone %>
   </div>
 
+  <div class="field">
+    <%= f.label :birthday %>
+    <%= f.date_field :birthday %>
+  </div>
+
+  <h3>Location details</h3>
+  <hr>
+  <div class="field">
+    <%= f.label :postal_code %>
+    <%= f.text_field :postal %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Preferred_area %>
+    <%= f.text_field :area %>
+  </div>
+  <h3>Account details</h3>
+  <hr>
   <div class="field">
     <%= f.label :email %>
     <%= f.email_field :email %>
