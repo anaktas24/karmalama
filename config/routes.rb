@@ -8,16 +8,18 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
   get '/my_bookings', to: 'bookings#my_bookings'
-  get '/profile', to: 'pages#profile'
-  patch '/profile', to: 'pages#update_profile'
   get '/my_assignments', to: 'pages#my_assignments'
 
+  #User
+  get '/profile', to: 'pages#profile'
+  patch '/profile', to: 'pages#update_profile'
+  delete '/users/:id', to: 'users#destroy', as: 'delete_user'
+
+  #Signup
   get '/users/step1', to: 'users/registrations#step1', as: 'step1_user_registration'
   post '/users/step1', to: 'users/registrations#process_step1', as: 'process_step1_user_registration'
-  # Replace the existing routes for step 2
   get '/users/step2', to: 'users/registrations#step2', as: 'step2_user_registration'
   post '/users/step2', to: 'users/registrations#process_step2', as: 'process_step2_user_registration'
-
   get '/users/step3', to: 'users/registrations#step3', as: 'step3_user_registration'
 
 
