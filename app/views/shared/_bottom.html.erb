@@ -12,8 +12,16 @@
     <img src="../../assets/lama-grey.svg" width="24px">
     <span class="nav_text">Lama</span>
   </a>
-  <a href="/profile" class="nav_link">
-    <img src="../../assets/user-grey.svg" width="24px">
-    <span class="nav_text">Profile</span>
-  </a>
+  <% if current_user %>
+    <a href="/profile" class="nav_link">
+      <img src="../../assets/user-grey.svg" width="24px">
+      <span class="nav_text">Profile</span>
+    </a>
+  <% else %>
+    <a href="<%= new_user_registration_path(user: { step: 1 }) %>" class="nav_link">
+      <img src="../../assets/user-grey.svg" width="24px">
+      <span class="nav_text">Profile</span>
+    </a>
+  <% end %>
+
 </nav>
