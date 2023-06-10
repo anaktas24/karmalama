@@ -4,6 +4,10 @@
 
 <%= form_with model: @user, url: profile_path, method: :patch, local: true do |f| %>
   <!-- Include the necessary fields for profile editing -->
+
+  <%= f.file_field :picture %>
+
+
   <%= f.label :name %>
   <%= f.text_field :name %>
 

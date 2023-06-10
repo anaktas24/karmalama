@@ -162,7 +162,8 @@
       </div>
       </div>
       <div class="frame14-group69571">
-        <%# add code for picture heere %>
+        <%= image_tag current_user.picture.url if current_user.picture.attached? %>
+
         <span class="frame14-text43"><span><%= current_user.name %></p></span></span>
 
       </div>

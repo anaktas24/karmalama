@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # Devise modules
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
-
+  has_one_attached :picture
   # Validations
   validates :name, :surname, :phone, :birthday, :postal, :area, presence: true
   validates :email, presence: true
