@@ -2,7 +2,7 @@
   <link href="./frame14.css" rel="stylesheet" />
   <div class="frame14-container">
     <div class="frame14-frame14">
-      <%= link_to "Edit Profile", edit_path, class: "btn btn-primary" %>
+
       <img
         src="/rectangle419072832-aq7-500w.png"
         class="frame14-rectangle41907"
@@ -30,6 +30,7 @@
       </div>
       <div class="frame14-group6956">
         <span class="frame14-text08"><span>Details</span></span>
+        <%= link_to "Edit Profile", edit_path, class: "btn btn-primary" %>
         <div class="frame14-frame6900">
           <div class="frame14-group6898">
             <span class="frame14-text10"><span><p><%= current_user.email %></p></span></span>
@@ -123,9 +124,7 @@
       <div class="frame14-group6910">
         <span class="frame14-text20">
           <span>
-            Lorem ipsum dolor sit amet consectetur. Lectus iaculis tempor ipsum
-            placerat neque. Fames senectus sed pulvinar mauris eget sed dolor
-            diam ipsum. Tincidunt at in cursus nec dictum ipsum id.
+            <p><%= current_user.about_me %></p>
           </span>
         </span>
         <div class="frame14-group6870">

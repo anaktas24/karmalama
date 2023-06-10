@@ -19,6 +19,11 @@
   <%= f.label :phone %>
   <%= f.text_field :phone %>
 
+  <div class="field">
+    <%= f.label :about_me %>
+    <%= f.text_area :about_me, rows: 4, class: "form-control" %>
+  </div>
+
   <!-- Interests -->
   <h3>Interests</h3>
   <% User::INTEREST_CATEGORIES.each do |category| %>
