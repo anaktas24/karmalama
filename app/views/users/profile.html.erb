@@ -2,6 +2,7 @@
   <link href="./frame14.css" rel="stylesheet" />
   <div class="frame14-container">
     <div class="frame14-frame14">
+      <%= link_to "Edit Profile", edit_path, class: "btn btn-primary" %>
       <img
         src="/rectangle419072832-aq7-500w.png"
         class="frame14-rectangle41907"
@@ -72,7 +73,7 @@
             </div>
           </div>
           <div class="frame14-group6899">
-            <span class="frame14-text14"><span>Zürich</span></span>
+            <span class="frame14-text14"><span><%= current_user.area %></span></span>
             <div class="frame14-group07">
               <div class="frame14-groupsvg2">
                 <img
@@ -89,7 +90,7 @@
             </div>
           </div>
           <div class="frame14-group6901">
-            <span class="frame14-text16"><span>22 Mai 1999</span></span>
+            <span class="frame14-text16"><span><%= current_user.birthday %></span></span>
             <div class="frame14-group08">
               <div class="frame14-groupsvg3">
                 <img
@@ -101,7 +102,7 @@
             </div>
           </div>
           <div class="frame14-group6902">
-            <span class="frame14-text18"><span>8004 Zürich</span></span>
+            <span class="frame14-text18"><span><%= current_user.postal %></span></span>
             <div class="frame14-group09">
               <div class="frame14-groupsvg4">
                 <img
@@ -133,7 +134,7 @@
       </div>
       <div class="frame14-group6959">
         <span class="frame14-text24">
-          <span>Bachelors in Science, University</span>
+          <span><%= current_user.education_level %></span>
         </span>
         <div class="frame14-group68701">
           <span class="frame14-text26"><span>Education</span></span>
@@ -144,7 +145,7 @@
           <span>
             <span>4 Years, Hotel Management</span>
             <br />
-            <span>2.4 Years, Inventory Management</span>
+            <span><%= User.work_levels.key(current_user.work_level) %></span>
           </span>
         </span>
         <div class="frame14-group68702">
@@ -162,28 +163,34 @@
       </div>
       </div>
       <div class="frame14-group69571">
-        <% if current_user.picture.attached? %>
-        <%= image_tag current_user.picture.variant(resize: "200x200") %>
-      <% else %>
-        <p>No picture available</p>
-      <% end %>
+        <%# add code for picture heere %>
         <span class="frame14-text43"><span><%= current_user.name %></p></span></span>
 
       </div>
       <div class="frame14-group6859">
-        <span class="frame14-text45"><span>Senior:innen</span></span>
+        <span class="frame14-text45"><span><% current_user.interests.each do |interests| %>
+            <%= interests %>
+          <% end %></span></span>
       </div>
       <div class="frame14-group6961">
         <span class="frame14-text47"><span>Flucht &amp; Migration</span></span>
       </div>
       <div class="frame14-group6962">
-        <span class="frame14-text49"><span>Gartenarbeit</span></span>
+        <span class="frame14-text49"><span>
+
+          <% current_user.skillset.each do |skill| %>
+            <%= skill %>
+          <% end %>
+        </span>
       </div>
       <div class="frame14-group6963">
         <span class="frame14-text51"><span>Social Media</span></span>
       </div>
       <div class="frame14-group6964">
-        <span class="frame14-text53"><span>Sports</span></span>
+        <span class="frame14-text53"><span>
+        <% current_user.language_skills.each do |language| %>
+          <span class="frame14-language"><%= language %></span>
+        <% end %></span></span>
       </div>
       <div class="frame14-group6965">
         <span class="frame14-text55"><span>Sports</span></span>

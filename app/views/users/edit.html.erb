@@ -1,9 +1,24 @@
-<h2>Skip & Complete Registration</h2>
+<!-- edit_profile.html.erb -->
 
-<h1>Fully complete profile</h1>
+<h2>Edit Profile</h2>
 
-<%= form_with model: @user, url: user_registration_path(format: :html), method: :post, local: true do |f| %>
-  <%= f.hidden_field :step, value: @step %>
+<%= form_with model: @user, url: profile_path, method: :patch, local: true do |f| %>
+  <!-- Include the necessary fields for profile editing -->
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+
+  <%= f.label :phone %>
+  <%= f.text_field :phone %>
+
   <!-- Interests -->
   <h3>Interests</h3>
   <% User::INTEREST_CATEGORIES.each do |category| %>
@@ -16,7 +31,6 @@
   <!-- Education Percentage -->
   <h3>Education Percentage</h3>
   <%= f.select :education_level, User.education_levels.keys %>
-
 
   <!-- Work Percentage -->
   <h3>Work Percentage</h3>
@@ -40,19 +54,5 @@
     </label>
   <% end %>
 
-
-
-
-
-
-
-
-
-
-
-
-
-  <%= f.submit "Complete Registration" %>
+  <%= f.submit "Save Changes" %>
 <% end %>
-<!-- Link to step 2 -->
-<%= link_to "Previous", new_user_registration_path(user: { step: 1 }) %>
