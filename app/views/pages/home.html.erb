@@ -89,7 +89,6 @@
                         class="frame71-vector31"
                       />
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -162,7 +161,6 @@
           </div>
           <span class="frame71-text67"><span>Disabled People</span></span>
         </div>
-
       </div>
       <!--Register,Login-->
 
@@ -182,13 +180,13 @@
         <% end %>
       </div>
     </div>
-  </div>
-  <div class="cards-listings">
-    <div class="wrapper">
-      <div class="row gx">
-        <% @listings.each do |listing| %>
-          <div class="col-sm-6 col-md-4 col-lg-3"><%= render 'shared/card', listing: listing %></div>
-        <% end  %>
+    <div class="cards-listings">
+      <div class="wrapper">
+        <div class="row gx">
+          <% @listings.each do |listing| %>
+            <div class="col-sm-6 col-md-4 col-lg-3"><%= render 'shared/card', listing: listing %></div>
+          <% end  %>
+        </div>
       </div>
     </div>
   </div>
