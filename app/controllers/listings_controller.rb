@@ -1,6 +1,7 @@
-
-
 class ListingsController < ApplicationController
+  before_action :set_listing, only: [:show, :apply]
+  before_action :authorize_admin, except: [:index, :show, :apply]
+
   def index
     @listings = policy_scope(Listing)
     if params[:query].present?
@@ -9,21 +10,13 @@ class ListingsController < ApplicationController
     else
       @listings = Listing.all
     end
+    render 'index'
   end
 
   def show
     @listing = Listing.find(params[:id])
     authorize @listing
-    # @markers = [ {lat: @listing.latitude,
-    #               lng: @listing.longitude,
-    #               info_window: render_to_string(partial: "info_window", locals: {listing: @listing})
-    #             },
-    #             { lat: current_user.latitude,
-    #               lng: current_user.longitude,
-    #               info_window: "<br><p>Your location</p>"
-    #             }
-    #           ]
-    @booking = Booking.new # can't figure this out.... trying to create new booking through the listings > show page
+    @booking = Booking.new
   end
 
   def new
@@ -58,7 +51,6 @@ class ListingsController < ApplicationController
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @listing.errors, status: :unprocessable_entity }
-        # need to check these erroes works (no validations)
       end
     end
   end
@@ -74,15 +66,28 @@ class ListingsController < ApplicationController
       else
         format.html { redirect_to listing_path, status: :unprocessable_entity, notice: "Listing could not be deleted." }
         format.json { render json: @listing.errors, status: :unprocessable_entity }
-        # need to check these erroes works (no validations)
       end
     end
   end
 
+  def apply
+    # Code for applying to the listing
+  end
+
   private
+
+  def set_listing
+    @listing = Listing.find(params[:id])
+  end
 
   def listing_params
     params.require(:listing).permit(:name, :description, :price_per_hour, :location, :photo, :category_type, :date)
   end
 
+  def authorize_admin
+    unless current_user.admin?
+      flash[:error] = "You are not authorized to perform this action."
+      redirect_to listings_path
+    end
+  end
 end

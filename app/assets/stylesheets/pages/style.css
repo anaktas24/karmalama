@@ -1,4 +1,4 @@
-:root{
+ :root{
   --pink-color: #F37A8E;
   --light-pink-color: #F7A8B5;
   --blue-color: #366d9f;
@@ -13,8 +13,8 @@
 
 
 
-/*
 
+/*
 body {
   background: rgb(241, 240, 255);
   font-family: europa-regularregular, sans-serif;
@@ -23,12 +23,12 @@ body {
   background: #fff;
 }
 
-/* .form-control {
+ .form-control {
   background-color: #fff;
   border-style: none;
   border-bottom: 2px solid #e3e3e3;
-} */
-/* .form-control:focus {
+}
+ .form-control:focus {
   box-shadow: none;
   border-color: #4a4a4a;
   background-color: #fff;
@@ -43,9 +43,9 @@ body {
 }
 .simple_form input.button-primary:hover {
   background-color: #52c4be;
-} */
+}
 
-/* .profile-button {
+.profile-button {
   box-shadow: 2px 2px 10px;
   border: none;
   border-radius: 30px;
@@ -68,9 +68,9 @@ body {
 .back:hover {
   color: #0f2e93;
   cursor: pointer
-} */
+}
 
-/* .button {
+.button {
   letter-spacing: 0;
     display: inline-block;
     outline: none;
@@ -111,8 +111,8 @@ body {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
   margin-bottom: 20px;
-} */
-/* .card-link {
+}
+.card-link {
   position: absolute;
   top: 0;
   bottom: 0;

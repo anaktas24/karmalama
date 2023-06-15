@@ -24,12 +24,9 @@ Rails.application.routes.draw do
   get '/users/step3', to: 'users/registrations#step3', as: 'step3_user_registration'
 
 
-  resources :listings do
-    resources :bookings do
-      member do
-        patch '/confirm', to: 'bookings#confirm'
-        patch '/reject', to: 'bookings#reject'
-      end
+  resources :listings, only: [:index, :show] do
+    member do
+      post 'apply'
     end
   end
 end

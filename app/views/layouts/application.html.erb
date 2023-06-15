@@ -7,13 +7,14 @@
     <meta name = "viewport" content ="width=device-width, maximum-scale=1.0, user-scalable=yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link rel="stylesheet" href="style.css" />
+    <link href="/assets/application.css" rel="stylesheet" />
+    <%= stylesheet_link_tag "pages/style", "data-turbo-track": "reload" %>
+    <link href="/assets/pages/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <script src="https://cdn.jsdelivr.net/npm/cloudinary-core@2.10.0/cloudinary-core-shrinkwrap.min.js"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,12 +26,12 @@
   <body>
 
     <%= render "shared/bottom" %>
-    <div class="wrapper page-wrapper">
-      <%= yield %>
-    </div>
+
+    <%= yield %>
+
 
     <%= render "shared/flashes" %>
 
-    <script src="bottom.js"></script>
+    <%# <script src="bottom.js"></script> %>
   </body>
 </html>
