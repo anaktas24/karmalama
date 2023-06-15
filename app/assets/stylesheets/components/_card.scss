@@ -1,12 +1,12 @@
-.cards-listings {
+.card-container {
   width: 100%;
   display: flex;
   overflow: auto;
-  min-height: 50vh;
+  min-height: 100vh;
   align-items: center;
   flex-direction: column;
 }
-.component23-component23 {
+.card-component23 {
   width: 380px;
   height: 294px;
   display: flex;
@@ -14,7 +14,7 @@
   align-items: flex-start;
   flex-shrink: 0;
 }
-.component23-rectangle41904 {
+.card-cardframe {
   top: 0px;
   left: 0px;
   width: 380px;
@@ -22,51 +22,84 @@
   position: absolute;
   box-shadow: 0px 9px 16px 0px rgba(81, 67, 243, 0.05000000074505806) ;
 }
-.component23-lightningthunderfastswift1 {
-  top: 247px;
-  left: 328px;
-  width: 30px;
-  height: 30px;
+.card-image {
+  top: 0px;
+  left: 0px;
+  width: 380px;
+  height: 174px;
+  position: absolute;
+  border-radius: 13px;
+}
+.card-wishlist {
+  top: 12px;
+  left: 339px;
+  width: 23px;
+  height: 23px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.card-heart1 {
+  top: 0px;
+  left: 0px;
+  width: 23px;
+  height: 23px;
   display: flex;
   overflow: hidden;
   position: absolute;
   align-items: flex-start;
   flex-shrink: 0;
 }
-.component23-group {
-  top: 2.499964475631714px;
-  left: 6.2497687339782715px;
-  width: 17.50046157836914px;
-  height: 25.000459671020508px;
+.card-heartframe {
+  top: 2.8750009536743164px;
+  left: 1.9157307147979736px;
+  width: 19.16666603088379px;
+  height: 17.250957489013672px;
   display: flex;
   position: absolute;
   align-items: flex-start;
   flex-shrink: 1;
 }
-.component23-group01 {
+.card-heartframe1 {
   top: 0px;
   left: 0px;
-  width: 17.50046157836914px;
-  height: 25.000459671020508px;
+  width: 19.16666603088379px;
+  height: 17.250957489013672px;
   display: flex;
   position: absolute;
   align-items: flex-start;
   flex-shrink: 1;
 }
-.component23-vector {
+.card-heart {
   top: 0px;
   left: 0px;
-  width: 18px;
-  height: 25px;
+  width: 19px;
+  height: 17px;
   position: absolute;
 }
-.component23-text {
-  top: 219px;
-  left: 53px;
-  color: rgba(2, 2, 2, 1);
+.card-tags {
+  gap: 6px;
+  top: 11px;
+  left: 15px;
+  width: 132px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+}
+.card-tag1 {
+  gap: 10px;
+  display: flex;
+  padding: 7px 15px;
+  overflow: hidden;
+  align-items: flex-start;
+  border-radius: 11.5px;
+  background-color: rgba(2, 2, 2, 1);
+}
+.card-text {
+  color: rgba(255, 255, 255, 1);
   height: auto;
-  position: absolute;
-  font-size: 12px;
+  font-size: 8px;
   font-style: Regular;
   text-align: left;
   font-family: Nunito;
@@ -75,58 +108,19 @@
   font-stretch: normal;
   text-decoration: none;
 }
-.component23-calendar3range1 {
-  top: 216px;
-  left: 27px;
-  width: 18px;
-  height: 18px;
+.card-tag2 {
+  gap: 10px;
   display: flex;
+  padding: 7px 15px;
   overflow: hidden;
-  position: absolute;
   align-items: flex-start;
-  flex-shrink: 0;
+  border-radius: 11.5px;
+  background-color: rgba(255, 255, 255, 1);
 }
-.component23-group02 {
-  top: 1.5px;
-  left: 2.25px;
-  width: 13.5px;
-  height: 14.25px;
-  display: flex;
-  position: absolute;
-  align-items: flex-start;
-  flex-shrink: 1;
-}
-.component23-group03 {
-  top: 0px;
-  left: 0px;
-  width: 13.5px;
-  height: 14.25px;
-  display: flex;
-  position: absolute;
-  align-items: flex-start;
-  flex-shrink: 1;
-}
-.component23-vector01 {
-  top: 0.75px;
-  left: 0px;
-  width: 13px;
-  height: 13px;
-  position: absolute;
-}
-.component23-vector02 {
-  top: 0px;
-  left: 3px;
-  width: 7px;
-  height: 10px;
-  position: absolute;
-}
-.component23-text02 {
-  top: 241px;
-  left: 53px;
-  color: rgba(2, 2, 2, 1);
+.card-text02 {
+  color: rgba(0, 0, 0, 1);
   height: auto;
-  position: absolute;
-  font-size: 12px;
+  font-size: 8px;
   font-style: Regular;
   text-align: left;
   font-family: Nunito;
@@ -135,112 +129,7 @@
   font-stretch: normal;
   text-decoration: none;
 }
-.component23-locationpinmap2 {
-  top: 239px;
-  left: 28px;
-  width: 16px;
-  height: 16px;
-  display: flex;
-  overflow: hidden;
-  position: absolute;
-  align-items: flex-start;
-  flex-shrink: 0;
-}
-.component23-group04 {
-  top: 1.3333326578140259px;
-  left: 2.6666667461395264px;
-  width: 10.666293144226074px;
-  height: 13.334095001220703px;
-  display: flex;
-  position: absolute;
-  align-items: flex-start;
-  flex-shrink: 1;
-}
-.component23-group05 {
-  top: 0px;
-  left: 0px;
-  width: 10.666293144226074px;
-  height: 13.334095001220703px;
-  display: flex;
-  position: absolute;
-  align-items: flex-start;
-  flex-shrink: 1;
-}
-.component23-vector03 {
-  top: 2.6666674613952637px;
-  left: 2.6666665077209473px;
-  width: 5px;
-  height: 5px;
-  position: absolute;
-}
-.component23-vector04 {
-  top: 0px;
-  left: 0px;
-  width: 11px;
-  height: 13px;
-  position: absolute;
-}
-.component23-text04 {
-  top: 263px;
-  left: 53px;
-  color: rgba(2, 2, 2, 1);
-  height: auto;
-  position: absolute;
-  font-size: 12px;
-  font-style: Regular;
-  text-align: left;
-  font-family: Nunito;
-  font-weight: 400;
-  line-height: 108.09999704360962%;
-  font-stretch: normal;
-  text-decoration: none;
-}
-.component23-building21 {
-  top: 262px;
-  left: 29px;
-  width: 14px;
-  height: 14px;
-  display: flex;
-  overflow: hidden;
-  position: absolute;
-  align-items: flex-start;
-  flex-shrink: 0;
-}
-.component23-group06 {
-  top: 1.1666640043258667px;
-  left: 1.1666666269302368px;
-  width: 11.083333015441895px;
-  height: 11.083335876464844px;
-  display: flex;
-  position: absolute;
-  align-items: flex-start;
-  flex-shrink: 1;
-}
-.component23-group07 {
-  top: 0px;
-  left: 0px;
-  width: 11.083333015441895px;
-  height: 11.083335876464844px;
-  display: flex;
-  position: absolute;
-  align-items: flex-start;
-  flex-shrink: 1;
-}
-.component23-vector05 {
-  top: 0px;
-  left: 0px;
-  width: 11px;
-  height: 11px;
-  position: absolute;
-}
-.component23-vector06 {
-  top: 2.9166693687438965px;
-  left: 5.25px;
-  width: 3px;
-  height: 6px;
-  position: absolute;
-}
-.component23-text06 {
+.card-text04 {
   top: 188px;
   left: 27px;
   color: rgba(2, 2, 2, 1);
@@ -255,114 +144,226 @@
   font-stretch: normal;
   text-decoration: none;
 }
-.component23-rectangle41905 {
-  top: 0px;
-  left: 0px;
-  width: 380px;
-  height: 174px;
-  position: absolute;
-  border-radius: 13px;
-}
-.component23-frame3 {
-  gap: 6px;
-  top: 11px;
-  left: 15px;
-  width: 132px;
-  display: flex;
-  position: absolute;
-  align-items: flex-start;
-}
-.component23-frame1 {
-  gap: 10px;
-  display: flex;
-  padding: 7px 15px;
-  overflow: hidden;
-  align-items: flex-start;
-  border-radius: 11.5px;
-  background-color: rgba(2, 2, 2, 1);
-}
-.component23-text08 {
-  color: rgba(255, 255, 255, 1);
-  height: auto;
-  font-size: 8px;
-  font-style: Regular;
-  text-align: left;
-  font-family: Nunito;
-  font-weight: 400;
-  line-height: 108.09999704360962%;
-  font-stretch: normal;
-  text-decoration: none;
-}
-.component23-frame2 {
-  gap: 10px;
-  display: flex;
-  padding: 7px 15px;
-  overflow: hidden;
-  align-items: flex-start;
-  border-radius: 11.5px;
-  background-color: rgba(255, 255, 255, 1);
-}
-.component23-text10 {
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  font-size: 8px;
-  font-style: Regular;
-  text-align: left;
-  font-family: Nunito;
-  font-weight: 400;
-  line-height: 108.09999704360962%;
-  font-stretch: normal;
-  text-decoration: none;
-}
-.component23-group6883 {
-  top: 12px;
-  left: 339px;
-  width: 23px;
-  height: 23px;
-  display: flex;
-  position: absolute;
-  align-items: flex-start;
-  flex-shrink: 1;
-}
-.component23-heart1 {
-  top: 0px;
-  left: 0px;
-  width: 23px;
-  height: 23px;
+.card-calendar3range1 {
+  top: 216px;
+  left: 27px;
+  width: 18px;
+  height: 18px;
   display: flex;
   overflow: hidden;
   position: absolute;
   align-items: flex-start;
   flex-shrink: 0;
 }
-.component23-group08 {
-  top: 2.8750009536743164px;
-  left: 1.9157307147979736px;
-  width: 19.16666603088379px;
-  height: 17.250957489013672px;
+.card-calendar {
+  top: 1.5px;
+  left: 2.25px;
+  width: 13.5px;
+  height: 14.25px;
   display: flex;
   position: absolute;
   align-items: flex-start;
   flex-shrink: 1;
 }
-.component23-group09 {
+.card-group {
   top: 0px;
   left: 0px;
-  width: 19.16666603088379px;
-  height: 17.250957489013672px;
+  width: 13.5px;
+  height: 14.25px;
   display: flex;
   position: absolute;
   align-items: flex-start;
   flex-shrink: 1;
 }
-.component23-vector07 {
-  top: 0px;
+.card-vector {
+  top: 0.75px;
   left: 0px;
-  width: 19px;
-  height: 17px;
+  width: 13px;
+  height: 13px;
   position: absolute;
 }
-.component23-group6884 {
+.card-vector1 {
+  top: 0px;
+  left: 3px;
+  width: 7px;
+  height: 10px;
+  position: absolute;
+}
+.card-text06 {
+  top: 219px;
+  left: 53px;
+  color: rgba(2, 2, 2, 1);
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Nunito;
+  font-weight: 400;
+  line-height: 108.09999704360962%;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.card-locationpinmap2 {
+  top: 239px;
+  left: 28px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.card-location {
+  top: 1.3333326578140259px;
+  left: 2.6666667461395264px;
+  width: 10.666293144226074px;
+  height: 13.334095001220703px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.card-group1 {
+  top: 0px;
+  left: 0px;
+  width: 10.666293144226074px;
+  height: 13.334095001220703px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.card-vector2 {
+  top: 2.6666674613952637px;
+  left: 2.6666665077209473px;
+  width: 5px;
+  height: 5px;
+  position: absolute;
+}
+.card-vector3 {
+  top: 0px;
+  left: 0px;
+  width: 11px;
+  height: 13px;
+  position: absolute;
+}
+.card-text08 {
+  top: 241px;
+  left: 53px;
+  color: rgba(2, 2, 2, 1);
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Nunito;
+  font-weight: 400;
+  line-height: 108.09999704360962%;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.card-building {
+  top: 262px;
+  left: 29px;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.card-bulding {
+  top: 1.1666640043258667px;
+  left: 1.1666666269302368px;
+  width: 11.083333015441895px;
+  height: 11.083335876464844px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.card-building1 {
+  top: 0px;
+  left: 0px;
+  width: 11.083333015441895px;
+  height: 11.083335876464844px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.card-vector4 {
+  top: 0px;
+  left: 0px;
+  width: 11px;
+  height: 11px;
+  position: absolute;
+}
+.card-vector5 {
+  top: 2.9166693687438965px;
+  left: 5.25px;
+  width: 3px;
+  height: 6px;
+  position: absolute;
+}
+.card-text10 {
+  top: 263px;
+  left: 53px;
+  color: rgba(2, 2, 2, 1);
+  height: auto;
+  z-index: 100;
+  position: absolute;
+  font-size: 12px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Nunito;
+  font-weight: 400;
+  line-height: 108.09999704360962%;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.card-lightningthunderfastswift1 {
+  top: 247px;
+  left: 328px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.card-group2 {
+  top: 2.499964475631714px;
+  left: 6.2497687339782715px;
+  width: 17.50046157836914px;
+  height: 25.000459671020508px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.card-group3 {
+  top: 0px;
+  left: 0px;
+  width: 17.50046157836914px;
+  height: 25.000459671020508px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.card-vector6 {
+  top: 0px;
+  left: 0px;
+  width: 18px;
+  height: 25px;
+  position: absolute;
+}
+.card-timepoints {
   top: 127px;
   left: 264px;
   width: 94px;
@@ -372,17 +373,14 @@
   align-items: flex-start;
   flex-shrink: 1;
 }
-.component23-ellipse1186 {
+.card-ellipse1186 {
   top: 0px;
   left: 0px;
   width: 94px;
   height: 94px;
   position: absolute;
-  background: #F37A8E;
-  border-radius: 50%;
-  backdrop-filter: blur(9.5px);
 }
-.component23-group6947 {
+.card-group6947 {
   top: 58px;
   left: 19px;
   width: 39.29310607910156px;
@@ -392,14 +390,14 @@
   align-items: flex-start;
   flex-shrink: 1;
 }
-.component23-ll4 {
+.card-ll4 {
   top: 8px;
   left: 0px;
   width: 15px;
   height: 14px;
   position: absolute;
 }
-.component23-maskgroup {
+.card-maskgroup {
   top: 0px;
   left: 17px;
   width: 22.29310417175293px;
@@ -409,21 +407,21 @@
   align-items: flex-start;
   flex-shrink: 1;
 }
-.component23-image4 {
+.card-image4 {
   top: 0px;
   left: 0px;
   width: 22px;
   height: 24px;
   position: absolute;
 }
-.component23-ll5 {
+.card-ll5 {
   top: 8px;
   left: 20px;
   width: 15px;
   height: 14px;
   position: absolute;
 }
-.component23-text12 {
+.card-text12 {
   top: 38px;
   left: 21px;
   color: rgba(255, 255, 255, 1);
@@ -438,7 +436,7 @@
   font-stretch: normal;
   text-decoration: none;
 }
-.component23-timerclock1 {
+.card-timerclock1 {
   top: 12px;
   left: 35px;
   width: 24px;
@@ -449,7 +447,7 @@
   align-items: flex-start;
   flex-shrink: 0;
 }
-.component23-group10 {
+.card-group4 {
   top: 2px;
   left: 4.010885238647461px;
   width: 15.988566398620605px;
@@ -459,7 +457,7 @@
   align-items: flex-start;
   flex-shrink: 1;
 }
-.component23-group11 {
+.card-group5 {
   top: 0px;
   left: 0px;
   width: 15.988566398620605px;
@@ -469,36 +467,24 @@
   align-items: flex-start;
   flex-shrink: 1;
 }
-.component23-vector08 {
+.card-vector7 {
   top: 8px;
   left: 6.989114761352539px;
   width: 2px;
   height: 6px;
   position: absolute;
 }
-.component23-vector09 {
+.card-vector8 {
   top: 0px;
   left: 0px;
   width: 16px;
   height: 20px;
   position: absolute;
 }
-.component23-line7 {
+.card-line7 {
   top: 60px;
   left: 12px;
   width: 69px;
   height: 1px;
   position: absolute;
-}
-
-
-.component23-group6885 {
-  top: 127px;
-  left: 264px;
-  width: 94px;
-  height: 94px;
-  display: flex;
-  position: absolute;
-  align-items: flex-start;
-  flex-shrink: 1;
 }
