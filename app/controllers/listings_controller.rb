@@ -10,6 +10,7 @@ class ListingsController < ApplicationController
     else
       @listings = Listing.all
     end
+    puts @listings.inspect
     render 'index'
   end
 

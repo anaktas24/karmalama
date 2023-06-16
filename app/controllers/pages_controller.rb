@@ -9,13 +9,25 @@ class PagesController < ApplicationController
       @listings = Listing.all.order('created_at DESC')
     end
 
-    @listings = @listings.where(category_type: params[:query]) if params[:query].present?
-    @listings = @listings.order(params[:order_by] => params[:order]) if params[:order_by].present?
+    if params[:query].present?
+      @listings = @listings.where(category_type: params[:query])
+    end
+
+    if params[:order_by].present? && params[:order].present?
+      order_column = params[:order_by] == 'distance' ? 'distance' : params[:order_by]
+      order_direction = params[:order] == 'asc' ? 'ASC' : 'DESC'
+      @listings = @listings.order(Arel.sql("#{order_column} #{order_direction}"))
+    end
 
     @listings = @listings.limit(24) # Limit the number of listings to display
 
+    puts "Listing Query: #{@listings.to_sql}"
+
     # Other code in the action
   end
+
+
+
 
 
   private
