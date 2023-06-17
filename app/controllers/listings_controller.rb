@@ -72,7 +72,10 @@ class ListingsController < ApplicationController
   end
 
   def apply
-    # Code for applying to the listing
+    @listing = Listing.find(params[:id])
+    authorize @listing
+    @booking = Booking.new
+    redirect_to @listing, notice: 'Application submitted successfully.'
   end
 
   private

@@ -1,20 +1,21 @@
 .card-container {
   width: 100%;
   display: flex;
-  overflow: hidden;
+  overflow: auto;
   min-height: 100vh;
-  align-items: center;
+  align-items: center; /* Updated: Center items horizontally */
+  justify-content: center; /* Added: Center items vertically */
   flex-direction: column;
-  z-index: -1000;
 }
+
 .card-component23 {
   width: 380px;
   height: 294px;
   display: flex;
-  position: relative;
+  position: absolute;
   align-items: flex-start;
   flex-shrink: 0;
-  background-color: rgb(255, 190, 50);
+  background-color: rgb(187, 20, 20);
 }
 .card-cardframe {
   top: 0px;
@@ -96,13 +97,13 @@
   overflow: hidden;
   align-items: flex-start;
   border-radius: 11.5px;
-  background-color: rgb(2, 2, 2);
+  background-color: rgba(2, 2, 2, 1);
 }
 .card-text {
   color: rgba(255, 255, 255, 1);
   height: auto;
   font-size: 8px;
-  font-style: "Regular";
+  font-style: Regular;
   text-align: left;
   font-family: Nunito;
   font-weight: 400;
@@ -123,7 +124,7 @@
   color: rgba(0, 0, 0, 1);
   height: auto;
   font-size: 8px;
-  font-style: "Regular";
+  font-style: Regular;
   text-align: left;
   font-family: Nunito;
   font-weight: 400;
@@ -198,7 +199,7 @@
   height: auto;
   position: absolute;
   font-size: 12px;
-  font-style: "Regular";
+  font-style: Regular;
   text-align: left;
   font-family: Nunito;
   font-weight: 400;
@@ -258,7 +259,7 @@
   height: auto;
   position: absolute;
   font-size: 12px;
-  font-style: "Regular";
+  font-style: Regular;
   text-align: left;
   font-family: Nunito;
   font-weight: 400;
@@ -319,7 +320,7 @@
   z-index: 100;
   position: absolute;
   font-size: 12px;
-  font-style: "Regular";
+  font-style: Regular;
   text-align: left;
   font-family: Nunito;
   font-weight: 400;
@@ -489,4 +490,9 @@
   width: 69px;
   height: 1px;
   position: absolute;
+}
+@media(max-width: 479px) {
+  .card-image {
+    height: 124px;
+  }
 }
