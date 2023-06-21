@@ -1,0 +1,74 @@
+<!-- app/views/admin/index.html.erb -->
+
+<h1>Administrative Dashboard</h1>
+
+<div class="statistics">
+  <h2>Statistics</h2>
+  <!-- Display relevant statistics for administrators -->
+  <p>Total Users: <%= User.count %></p>
+  <p>Total Listings: <%= Listing.count %></p>
+  <!-- Add more statistics as needed -->
+</div>
+
+<div class="recent-activities">
+  <h2>Recent Activities</h2>
+  <ul>
+    <% @activities.each do |activity| %>
+      <li><%= activity %></li>
+    <% end %>
+  </ul>
+  <!-- Display recent activities or events relevant to administrators -->
+</div>
+
+<!-- Summary Information -->
+<div class="summary">
+  <h2>Summary</h2>
+  <p>Total Listings: <%= @listings.count %></p>
+  <p>Total Users: <%= User.count %></p>
+  <!-- Add more summary information as needed -->
+</div>
+
+<!-- New Listing Form -->
+<div class="create-listing">
+  <h2>Create New Listing</h2>
+  <%= form_for @listing, url: admin_create_listing_path do |f| %>
+    <%# Add form fields for listing creation %>
+    <!-- Form fields here -->
+    <%= f.submit 'Create Listing' %>
+  <% end %>
+</div>
+
+<!-- Existing Listings Table -->
+<div class="listings-table">
+  <h2>Listings</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @listings.each do |listing| %>
+        <tr>
+          <td><%= listing.name %></td>
+          <td><%= listing.description %></td>
+          <td><%= listing.price %></td>
+          <td><%= listing.category %></td>
+          <td>
+            <%= link_to 'Edit', admin_edit_listing_path(listing) %>
+            <%= link_to 'Delete', admin_destroy_listing_path(listing), method: :delete, data: { confirm: 'Are you sure you want to delete this listing?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<!-- Add more sections, widgets, and summary information as needed -->
+
+
+<!-- Add more sections, actions, or information as needed -->

@@ -1,5 +1,14 @@
 class User < ApplicationRecord
   attr_accessor :step
+  #ADMIN OR NO ADMIN
+  ROLES = {admin: 'admin'}.freeze
+
+  def assign_admin_role
+    update(role: ROLES[:admin])
+  end
+
+
+
 
   # Devise modules
   devise :database_authenticatable, :registerable,

@@ -4,7 +4,11 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # Define abilities for the user here. For example:
+    user ||= User.new # Guest user (not logged in)
+    if user.admin?
+      can :create, :edit, :delete, Listing
+    end
+  # Define abilities for the user here. For example:
     #
     #   return unless user.present?
     #   can :read, :all

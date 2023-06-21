@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
   get '/my_bookings', to: 'bookings#my_bookings'
-  get '/my_assignments', to: 'pages#my_assignments'
+
 
   #User
   get '/profile', to: 'users#profile', as: 'profile'
@@ -17,16 +17,29 @@ Rails.application.routes.draw do
   delete '/users/:id/delete', to: 'users#destroy', as: 'delete_user'
 
 
-
   #Signup
   get '/users/step1', to: 'users/registrations#step1', as: 'step1_user_registration'
   post '/users/step1', to: 'users/registrations#process_step1', as: 'process_step1_user_registration'
   get '/users/step3', to: 'users/registrations#step3', as: 'step3_user_registration'
 
+  #admin
+  # Admin Dashboard
+  get 'admin', to: 'admin#index', as: 'admin_dashboard'
 
+  # Listing Management Routes
+  namespace :admin do
+    get 'listings/new', to: 'listings#new', as: 'new_listing'
+    post 'listings', to: 'listings#create', as: 'create_listing'
+    get 'listings/:id/edit', to: 'listings#edit', as: 'edit_listing'
+    patch 'listings/:id', to: 'listings#update', as: 'update_listing'
+    delete 'listings/:id', to: 'listings#destroy', as: 'destroy_listing'
+  end
+
+  #Listing
   resources :listings, only: [:index, :show] do
     member do
       post 'apply'
     end
+    resources :bookings, only: [:index]
   end
 end
