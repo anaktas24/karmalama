@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  attr_accessor :step
+  attr_accessor :step, :admin
+
   #ADMIN OR NO ADMIN
   ROLES = {admin: 'admin'}.freeze
 
