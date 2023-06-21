@@ -19,17 +19,15 @@ Rails.application.routes.draw do
   get '/users/step3', to: 'users/registrations#step3', as: 'step3_user_registration'
 
   # Admin
-  get '/admin', to: 'admin#index', as: 'admin_dashboard'
-
-  # Listing Management Routes
   namespace :admin do
-    get '/', to: 'admin#index'
+    get '/', to: 'admin#index', as: 'admin_dashboard'
     get '/listings/new', to: 'admin#new_listing', as: 'new_listing'
     post '/listings', to: 'admin#create_listing', as: 'create_listing'
     get '/listings/:id/edit', to: 'admin#edit_listing', as: 'edit_listing'
     patch '/listings/:id', to: 'admin#update_listing', as: 'update_listing'
     delete '/listings/:id', to: 'admin#destroy_listing', as: 'destroy_listing'
   end
+
 
   # Listing
   resources :listings, only: [:index, :show] do
