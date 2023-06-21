@@ -1,8 +1,8 @@
-class AdminController < ApplicationController
+class Admin::AdminController < ApplicationController
   before_action :authorize_admin
 
   def index
-    render 'index'
+    render 'index'# Display the administrative dashboard view
   end
 
   def new_listing
@@ -13,7 +13,7 @@ class AdminController < ApplicationController
     @listing = Listing.new(listing_params)
 
     if @listing.save
-      redirect_to admin_path, notice: 'Listing created successfully.'
+      redirect_to admin_dashboard_path, notice: 'Listing created successfully.'
     else
       render :new_listing
     end
@@ -27,7 +27,7 @@ class AdminController < ApplicationController
     @listing = Listing.find(params[:id])
 
     if @listing.update(listing_params)
-      redirect_to admin_path, notice: 'Listing updated successfully.'
+      redirect_to admin_dashboard_path, notice: 'Listing updated successfully.'
     else
       render :edit_listing
     end
@@ -37,7 +37,7 @@ class AdminController < ApplicationController
     @listing = Listing.find(params[:id])
     @listing.destroy
 
-    redirect_to admin_path, notice: 'Listing deleted successfully.'
+    redirect_to admin_dashboard_path, notice: 'Listing deleted successfully.'
   end
 
   private
