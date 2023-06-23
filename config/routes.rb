@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   # Admin
   namespace :admin do
-    get '/', to: 'admin#index', as: 'admin_dashboard'
+    get '/index', to: 'admin#index', as: 'admin_dashboard'
     get '/listings/new', to: 'admin#new_listing', as: 'new_listing'
     post '/listings', to: 'admin#create_listing', as: 'create_listing'
     get '/listings/:id/edit', to: 'admin#edit_listing', as: 'edit_listing'

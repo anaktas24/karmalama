@@ -1,15 +1,14 @@
 class User < ApplicationRecord
   attr_accessor :step, :admin
 
-  #ADMIN OR NO ADMIN
-  ROLES = {admin: 'admin'}.freeze
+  ROLES = { admin: 'admin' }.freeze
 
-  def assign_admin_role
-    update(role: ROLES[:admin])
+  before_save :assign_admin_role, if: :admin
+
+  def make_admin!
+    self.admin = true
+    save
   end
-
-
-
 
   # Devise modules
   devise :database_authenticatable, :registerable,
@@ -55,5 +54,11 @@ class User < ApplicationRecord
     self.interests ||= []
     self.skillset ||= []
     self.language_skills ||= []
+  end
+
+  private
+
+  def assign_admin_role
+    self.admin = true
   end
 end

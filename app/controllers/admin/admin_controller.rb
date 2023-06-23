@@ -44,6 +44,8 @@ class Admin::AdminController < ApplicationController
 
   def authorize_admin
     unless current_user&.admin?
+      puts "Current user: #{current_user.inspect}"
+      puts "User is not an admin"
       redirect_to root_path, alert: 'You are not authorized to access this page.'
     end
   end
