@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_listing, only: [:show, :apply]
   before_action :authorize_admin, except: [:index, :show, :apply]
 

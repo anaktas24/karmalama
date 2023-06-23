@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get '/users/step3', to: 'users/registrations#step3', as: 'step3_user_registration'
 
   # Admin
-  namespace :admin do
+  namespace :admin, constraints: { role: :admin } do
     get '/index', to: 'admin#index', as: 'admin_dashboard'
     get '/listings/new', to: 'admin#new_listing', as: 'new_listing'
     post '/listings', to: 'admin#create_listing', as: 'create_listing'

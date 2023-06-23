@@ -1,14 +1,7 @@
 class User < ApplicationRecord
-  attr_accessor :step, :admin
+  attr_accessor :step
 
-  ROLES = { admin: 'admin' }.freeze
-
-  before_save :assign_admin_role, if: :admin
-
-  def make_admin!
-    self.admin = true
-    save
-  end
+  enum role: { user: 0, admin: 1 }
 
   # Devise modules
   devise :database_authenticatable, :registerable,
@@ -56,9 +49,4 @@ class User < ApplicationRecord
     self.language_skills ||= []
   end
 
-  private
-
-  def assign_admin_role
-    self.admin = true
-  end
 end
