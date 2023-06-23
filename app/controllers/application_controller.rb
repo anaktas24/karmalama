@@ -11,4 +11,14 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:address, :name, :phone])
   end
+
+  layout :set_layout
+  private
+  def set_layout
+    if current_user&.admin?
+      "admin"
+    else
+      "application"
+    end
+  end
 end

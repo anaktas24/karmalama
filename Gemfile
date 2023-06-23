@@ -60,3 +60,4 @@ group :test do
 end
 
 gem "pundit"
+gem "foreman", github: "ddollar/foreman"

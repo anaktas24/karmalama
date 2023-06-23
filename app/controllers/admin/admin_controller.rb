@@ -1,7 +1,16 @@
 class Admin::AdminController < ApplicationController
   before_action :authorize_admin
 
+  def authorize_admin
+    unless current_user&.admin?
+      puts "User is not an admin"
+      redirect_to root_path, alert: 'You are not authorized to access this page.'
+    end
+  end
+
   def index
+    puts "Inside index action"
+    authorize_admin
     render 'index'# Display the administrative dashboard view
   end
 
@@ -40,14 +49,8 @@ class Admin::AdminController < ApplicationController
     redirect_to admin_dashboard_path, notice: 'Listing deleted successfully.'
   end
 
-  private
 
-  def authorize_admin
-    unless current_user&.admin
-      puts "User is not an admin"
-      redirect_to root_path, alert: 'You are not authorized to access this page.'
-    end
-  end
+
 
   def listing_params
     params.require(:listing).permit(:name, :description, :price, :category)

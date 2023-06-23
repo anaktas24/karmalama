@@ -1,4 +1,4 @@
-class AddStep3AttributesToUsers < ActiveRecord::Migration[7.0]
+class AddStep3ToUsers < ActiveRecord::Migration[7.0]
   def change
     add_column :users, :interests, :text
     add_column :users, :skillset, :text

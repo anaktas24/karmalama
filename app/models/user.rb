@@ -1,7 +1,10 @@
 class User < ApplicationRecord
   attr_accessor :step
+  enum role: { regular: 0, admin: 1 }
 
-  enum role: { user: 0, admin: 1 }
+  def admin?
+    role == 'admin'
+  end
 
   # Devise modules
   devise :database_authenticatable, :registerable,
@@ -38,6 +41,7 @@ class User < ApplicationRecord
 
   has_many :listings, dependent: :destroy
   has_many :bookings, dependent: :destroy
+  attribute :about_me, :text
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
@@ -48,5 +52,6 @@ class User < ApplicationRecord
     self.skillset ||= []
     self.language_skills ||= []
   end
+
 
 end

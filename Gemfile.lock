@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/ddollar/foreman.git
+  revision: a5f9b78fa5cf657733c8a4cfd01b2c0c151b4fce
+  specs:
+    foreman (0.87.2)
+
+GIT
   remote: https://github.com/heartcombo/simple_form.git
   revision: 31fe25504771bd6cd425b585a4e0ed652fba4521
   specs:
@@ -288,6 +294,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass (~> 6.1)
+  foreman!
   geocoder
   jbuilder
   jsbundling-rails
