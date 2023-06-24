@@ -1,10 +1,10 @@
 class User < ApplicationRecord
   attr_accessor :step
-  enum role: { regular: 0, admin: 1 }
+  # enum role: { regular: 0, admin: 1 }
 
-  def admin?
-    role == 'admin'
-  end
+  # def admin?
+  #   role == 'admin'
+  # end
 
   # Devise modules
   devise :database_authenticatable, :registerable,

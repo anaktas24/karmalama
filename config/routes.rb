@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   }
 
   root to: "pages#home"
-  get '/my_bookings', to: 'bookings#my_bookings'
+  get 'my_bookings', to: 'bookings#my_bookings', as: 'my_bookings'
+
 
   # User
   get '/profile', to: 'users#profile', as: 'profile'
@@ -19,21 +20,32 @@ Rails.application.routes.draw do
   get '/users/step3', to: 'users/registrations#step3', as: 'step3_user_registration'
 
   # Admin
-  namespace :admin, constraints: { role: :admin } do
-    get '/index', to: 'admin#index', as: 'admin_dashboard'
-    get '/listings/new', to: 'admin#new_listing', as: 'new_listing'
-    post '/listings', to: 'admin#create_listing', as: 'create_listing'
-    get '/listings/:id/edit', to: 'admin#edit_listing', as: 'edit_listing'
-    patch '/listings/:id', to: 'admin#update_listing', as: 'update_listing'
-    delete '/listings/:id', to: 'admin#destroy_listing', as: 'destroy_listing'
-  end
+  # namespace :admin, constraints: { role: :admin } do
+  #   get '/index', to: 'admin#index', as: 'admin_dashboard'
+  #   get '/listings/new', to: 'admin#new_listing', as: 'new_listing'
+  #   post '/listings', to: 'admin#create_listing', as: 'create_listing'
+  #   get '/listings/:id/edit', to: 'admin#edit_listing', as: 'edit_listing'
+  #   patch '/listings/:id', to: 'admin#update_listing', as: 'update_listing'
+  #   delete '/listings/:id', to: 'admin#destroy_listing', as: 'destroy_listing'
+  # end
 
 
   # Listing
   resources :listings, only: [:index, :show] do
     member do
-      post 'apply'
+      post 'apply', to: 'bookings#create'
     end
     resources :bookings, only: [:index]
   end
+
+  resources :bookings, only: [:create, :update] do
+    member do
+      patch 'confirm'
+      patch 'reject'
+    end
+  end
+
+
+
+
 end

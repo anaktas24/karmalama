@@ -7,8 +7,7 @@ class BookingsController < ApplicationController
   end
 
   def confirm
-    @booking.status = "confirmed"
-    if @booking.save
+    if @booking.update(status: "confirmed")
       redirect_to action: :show, id: @booking.id
     else
       redirect_to action: :show, id: @booking.id
@@ -16,13 +15,13 @@ class BookingsController < ApplicationController
   end
 
   def reject
-    @booking.status = "rejected"
-    if @booking.save
+    if @booking.update(status: "rejected")
       redirect_to action: :show, id: @booking.id
     else
       redirect_to action: :show, id: @booking.id
     end
   end
+
 
   def my_bookings
     @bookings = policy_scope(Booking)
@@ -35,21 +34,24 @@ class BookingsController < ApplicationController
 
   def create
     @listing = Listing.find(params[:listing_id])
-    @booking = Booking.new(booking_params) # this gets the date
-    @booking.listing_id = @listing.id
-    @booking.user_id = current_user.id # this works
-    @booking.status = "pending" # this works
+    @booking = @listing.bookings.build(booking_params)
+    @booking.user = current_user
+    @booking.status = "pending"
     authorize @booking
-    # raise
+
     if @booking.save
       respond_to do |format|
         format.html { redirect_to my_bookings_path, notice: "Booking was created and the request has been issued to the listing owner." }
         format.json { head :no_content }
       end
     else
-      redirect_to listing_bookings_path, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @booking.errors, status: :unprocessable_entity }
+      end
     end
   end
+
 
   def edit
     @booking = Booking.find(params[:id])

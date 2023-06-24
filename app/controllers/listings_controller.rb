@@ -1,5 +1,4 @@
 class ListingsController < ApplicationController
-  load_and_authorize_resource
   before_action :set_listing, only: [:show, :apply]
   before_action :authorize_admin, except: [:index, :show, :apply]
 
@@ -19,6 +18,17 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     authorize @listing
     @booking = Booking.new
+    @display_apply_modal = false
+  end
+
+  def apply
+    @listing = Listing.find(params[:id])
+    authorize @listing
+    @booking = Booking.new
+    @display_apply_modal = true
+    respond_to do |format|
+      format.js { render 'apply' }
+    end
   end
 
   def new
@@ -72,18 +82,13 @@ class ListingsController < ApplicationController
     end
   end
 
-  def apply
-    @listing = Listing.find(params[:id])
-    authorize @listing
-    @booking = Booking.new
-    redirect_to @listing, notice: 'Application submitted successfully.'
-  end
-
   private
 
   def set_listing
     @listing = Listing.find(params[:id])
   end
+
+
 
   def listing_params
     params.require(:listing).permit(:name, :description, :price_per_hour, :location, :photo, :category_type, :date)

@@ -2,3 +2,4 @@
 //= link_directory ../stylesheets .css
 //= link_tree ../builds
 //= link pages/style.css
+//= link modalapply.js

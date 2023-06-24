@@ -1,55 +1,227 @@
-<div class="container">
-
-  <div class="row mb-3 show-card-img-container">
-    <div class="col-sm-12 col-md-6 col-lg-4 show-card-img">
-      <% if @listing.photo.attached? %>
-        <%= cl_image_tag @listing.photo.key, width: 250, height: 200, crop: :fill %>
-      <% end %>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4 card-body show-card-body">
-      <h5 class="card-title my-3"><%= @listing.name %></h5>
-      <p class="card-text"><%= @listing.description %></p>
-      <div>
-        <p class="card-text show-card-price"><small class="text-muted">Per hour: <%= @listing.price_per_hour.to_i.round(2) %> CHF</small></p>
+<div>
+  <div class="frame9-container">
+    <div class="frame9-frame9">
+      <img
+        src="/rectangle419072831-2hee-400h.png"
+        alt="Rectangle419072831"
+        class="frame9-picture"
+      />
+      <img
+        src="/rectangle419082831-uvys-400h.png"
+        alt="Rectangle419082831"
+        class="frame9-picture-frame"
+      />
+      <div class="frame9-wishlistheart">
+        <div class="frame9-heart2">
+          <div class="frame9-group">
+            <div class="frame9-group01">
+              <img
+                src="/heart2831-tdao.svg"
+                alt="heart2831"
+                class="frame9-heart"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="frame9-heart1">
+          <div class="frame9-group02">
+            <div class="frame9-group03">
+              <img
+                src="/vector2831-q9g9.svg"
+                alt="Vector2831"
+                class="frame9-vector"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="frame9-title"><span><%= @listing.name %></span></span>
+      <div class="frame9-tags">
+        <div class="frame9-frame1">
+          <span class="frame9-text01"><span>Elders</span></span>
+        </div>
+        <div class="frame9-frame2">
+          <span class="frame9-text03"><span>Gardening</span></span>
+        </div>
+      </div>
+      <img
+        src="/ellipse11882831-qweo-200h.png"
+        alt="Ellipse11882831"
+        class="frame9-back"
+      />
+      <div class="frame9-backarrow">
+        <div class="frame9-group04">
+          <div class="frame9-group05">
+            <img
+              src="/vector2831-nqj7.svg"
+              alt="Vector2831"
+              class="frame9-vector01"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="frame9-infos">
+        <div class="frame9-calendar">
+          <span class="frame9-text05">
+            <span>02:00pm - Wed, 22 April</span>
+          </span>
+          <div class="frame9-groupsvg">
+            <div class="frame9-group06">
+              <img
+                src="/vector2831-53re.svg"
+                alt="Vector2831"
+                class="frame9-vector02"
+              />
+              <img
+                src="/vector2831-t3tl.svg"
+                alt="Vector2831"
+                class="frame9-vector03"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="frame9--ity">
+          <span class="frame9-text07"><span>8004 Zürich</span></span>
+          <div class="frame9-group07">
+            <div class="frame9-groupsvg1">
+              <img
+                src="/vector2832-6v2x.svg"
+                alt="Vector2832"
+                class="frame9-vector04"
+              />
+              <img
+                src="/vector2832-5srg.svg"
+                alt="Vector2832"
+                class="frame9-vector05"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="frame9-organization">
+          <span class="frame9-text09"><span>Vereinigung Cerebral</span></span>
+          <div class="frame9-group08">
+            <div class="frame9-groupsvg2">
+              <img
+                src="/vector2832-sp6a.svg"
+                alt="Vector2832"
+                class="frame9-vector06"
+              />
+              <img
+                src="/vector2832-ulyd.svg"
+                alt="Vector2832"
+                class="frame9-vector07"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="frame9-requirements">
+        <span class="frame9-text11"><span>Requirements</span></span>
+      </div>
+      <span class="frame9-details">
+        <span>
+          <%= @listing.description %>
+        </span>
+      </span>
+      <span class="frame9-details1">
+        <span>
+          <%= @listing.description %>
+        </span>
+      </span>
+      <div class="frame9-company">
+        <span class="frame9-text15"><span>Company Name</span></span>
+        <span class="frame9-text17">
+          <span>
+            Lorem ipsum dolor sit amet consectetur. Sed nunc quam sit enim.
+            Volutpat posuere velit facilisis placerat iaculis sem elementum.
+            Ipsum.
+          </span>
+        </span>
+        <div class="frame9-group6905">
+          <img
+            src="/ellipse11862832-tmfh-200h.png"
+            alt="Ellipse11862832"
+            class="frame9-ellipse1186"
+          />
+          <div class="frame9-group09">
+            <img
+              src="/vector2832-k8m.svg"
+              alt="Vector2832"
+              class="frame9-vector08"
+            />
+            <img
+              src="/vector2832-5fqx.svg"
+              alt="Vector2832"
+              class="frame9-vector09"
+            />
+            <img
+              src="/vector2832-4smra.svg"
+              alt="Vector2832"
+              class="frame9-vector10"
+            />
+            <img
+              src="/vector2832-k31m.svg"
+              alt="Vector2832"
+              class="frame9-vector11"
+            />
+            <img
+              src="/vector2832-3cxb.svg"
+              alt="Vector2832"
+              class="frame9-vector12"
+            />
+            <img
+              src="/vector2832-vq7q.svg"
+              alt="Vector2832"
+              class="frame9-vector13"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="frame9-worklama">
+        <div class="frame9-timeer">
+          <span class="frame9-text19"><span><%= @listing.price_per_hour.to_i.round(2) %></span></span>
+          <img
+            src="/timerclock1svg2832-qu49u.svg"
+            alt="Timerclock1svg2832"
+            class="frame9-timerclock1svg"
+          />
+        </div>
+        <img src="/line72832-884f.svg" alt="Line72832" class="frame9-line7" />
+        <div class="frame9-lama">
+          <img src="/ll42832-ett9-200h.png" alt="ll42832" class="frame9-ll4" />
+          <img src="/ll62832-xvir-200h.png" alt="ll62832" class="frame9-ll6" />
+          <div class="frame9-maskgroup">
+            <img
+              src="/image42832-viy8-200h.png"
+              alt="image42832"
+              class="frame9-image4"
+            />
+          </div>
+          <img src="/ll52832-6hpr-200h.png" alt="ll52832" class="frame9-ll5" />
+        </div>
+      </div>
+      <div class="frame9-buttonapply">
+        <div class="frame9-signupbtn"></div>
+          <span class="frame9-text21"><span>
+            <button id="applyButton" class="btn btn-primary" data-toggle="modal" data-target="#applyModal">Apply</button>
+          </span> <!-- Close the span tag here -->
+        <%= render 'listings/apply_modal' %>
+        <%= javascript_include_tag 'modalapply' %>
       </div>
 
-    <% if @listing.user != current_user %>
-      <%= simple_form_for([@listing, @booking]) do |f| %>
-        <%= f.input :start_date %>
-        <%= f.input :end_date %>
-        <br>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-        <%= f.button :submit, value: "REQUEST BOOKING", id: "book" %>
-        <br>
-      <% end %>
-    <% else %>
-      <p class="card-text"><strong>This is your listing.</strong><br>You can edit or delete your listing below.</p>
-      <%= link_to "View bookings for this listing", listing_bookings_path(@listing), class: "button button-primary" %>
-    <% end %>
+      <div class="frame9-arrow-to-org-page">
+        <div class="frame9-group10">
+          <div class="frame9-group11">
+            <img
+              src="/vector2832-sum.svg"
+              alt="Vector2832"
+              class="frame9-vector14"
+            />
+            <%= link_to "Back to Home", root_path, class: "button button-primary" %>
 
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <hr>
-
-  <div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-  <hr>
-
-
-  <div>
-    <% if @listing.user == current_user %>
-      <%= link_to "Edit this listing", edit_listing_path(@listing), class: "button button-primary"  %>
-      <br>
-      <br>
-      <%= button_to "Destroy this listing", @listing, method: :delete, class: "button button-primary" %>
-    <% end %>
-    <hr>
-    <%= link_to "Go to all listings", root_path, class: "button button-primary" %>
-    <hr>
-    <%= link_to "Go to my listings", listings_path, class: "button button-primary" %>
-  </div>
-
 </div>

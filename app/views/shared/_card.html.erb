@@ -1,117 +1,119 @@
-<div>
-  <div class="card-container">
-    <div class="card-component23">
-      <%# <img
-        alt="cardframeI283"
-        src="/cardframei283-a5ig.svg"
-        class="card-cardframe"
-      /> %>
-      <img alt="imageI283" src="" class="card-image" />
-      <div class="card-wishlist">
-        <div class="card-heart1">
-          <div class="card-heartframe">
-            <div class="card-heartframe1">
-              <img
-                alt="VectorI283"
-                src="/assets/heart-white.svg"
-                class="card-heart"
-              />
+<a href="<%= listing_path(listing) %>">
+  <div>
+    <div class="card-container">
+      <div class="card-component23">
+        <%# <img
+          alt="cardframeI283"
+          src="/cardframei283-a5ig.svg"
+          class="card-cardframe"
+        /> %>
+        <img alt="imageI283" src="" class="card-image" />
+        <div class="card-wishlist">
+          <div class="card-heart1">
+            <div class="card-heartframe">
+              <div class="card-heartframe1">
+                <img
+                  alt="VectorI283"
+                  src="/assets/heart-white.svg"
+                  class="card-heart"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="card-tags">
-        <div class="card-tag1">
-          <span class="card-text"><span>Elders</span></span>
+        <div class="card-tags">
+          <div class="card-tag1">
+            <span class="card-text"><span>Elders</span></span>
+          </div>
+          <div class="card-tag2">
+            <span class="card-text02"><span>Gardening</span></span>
+          </div>
         </div>
-        <div class="card-tag2">
-          <span class="card-text02"><span>Gardening</span></span>
-        </div>
-      </div>
-      <span class="card-text04"><span><%= listing.name %></span></span>
-      <div class="card-calendar3range1">
-        <div class="card-calendar">
-          <div class="card-group">
-            <img
-              alt="VectorI283"
-              src="/assets/calendar-black.svg"
-              class="card-vector"
-            />
+        <span class="card-text04"><span><%= listing.name %></span></span>
+        <div class="card-calendar3range1">
+          <div class="card-calendar">
+            <div class="card-group">
+              <img
+                alt="VectorI283"
+                src="/assets/calendar-black.svg"
+                class="card-vector"
+              />
 
+            </div>
           </div>
         </div>
-      </div>
-      <span class="card-text06">
-        <span>Mi, 30. Juni 2023, 14:00-18:00</span>
-      </span>
-      <div class="card-locationpinmap2">
-        <div class="card-location">
-          <div class="card-group1">
-            <img
-              alt="VectorI283"
-              src="/assets/location-black.svg"
-              class="card-vector3"
-            />
-          </div>
-        </div>
-      </div>
-      <span class="card-text08">
-        <span><%= listing.location %></span>
-      </span>
-      <div class="card-building">
-        <div class="card-bulding">
-          <div class="card-building1">
-            <img
-              alt="VectorI283"
-              src="/assets/building-black.svg"
-              class="card-vector4"
-            />
-          </div>
-        </div>
-      </div>
-      <span class="card-text10"><span>Grüne Stadt Zürich</span></span>
-      <div class="card-lightningthunderfastswift1">
-        <div class="card-group2">
-          <div class="card-group3">
-            <img
-              alt="VectorI283"
-              src="/assets/lightning.svg"
-              class="card-vector6"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="card-timepoints">
-        <img
-          alt="Ellipse1186I283"
-          src="/assets/ellipse.png"
-          class="card-ellipse1186"
-        />
-        <div class="card-group6947">
-          <img alt="ll4I283" src="/assets/lama-white.svg" class="card-ll4" />
-          <div class="card-maskgroup">
-            <img
-              alt="image4I283"
-              src="/assets/lama-pink.svg"
-              class="card-image4"
-            />
-          </div>
-          <img alt="ll5I283" src="/assets/lama-white.svg" class="card-ll5" />
-        </div>
-        <span class="card-text12"><span><%= number_to_currency(listing.price_per_hour) %></span></span>
-        <div class="card-timerclock1">
-          <div class="card-group4">
-            <div class="card-group5">
+        <span class="card-text06">
+          <span>Mi, 30. Juni 2023, 14:00-18:00</span>
+        </span>
+        <div class="card-locationpinmap2">
+          <div class="card-location">
+            <div class="card-group1">
               <img
                 alt="VectorI283"
-                src="/assets/timer.svg"
-                class="card-vector8"
+                src="/assets/location-black.svg"
+                class="card-vector3"
               />
             </div>
           </div>
         </div>
-        <img alt="Line7I283" src="/assets/line.svg" class="card-line7" />
+        <span class="card-text08">
+          <span><%= listing.location %></span>
+        </span>
+        <div class="card-building">
+          <div class="card-bulding">
+            <div class="card-building1">
+              <img
+                alt="VectorI283"
+                src="/assets/building-black.svg"
+                class="card-vector4"
+              />
+            </div>
+          </div>
+        </div>
+        <span class="card-text10"><span>Grüne Stadt Zürich</span></span>
+        <div class="card-lightningthunderfastswift1">
+          <div class="card-group2">
+            <div class="card-group3">
+              <img
+                alt="VectorI283"
+                src="/assets/lightning.svg"
+                class="card-vector6"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="card-timepoints">
+          <img
+            alt="Ellipse1186I283"
+            src="/assets/ellipse.png"
+            class="card-ellipse1186"
+          />
+          <div class="card-group6947">
+            <img alt="ll4I283" src="/assets/lama-white.svg" class="card-ll4" />
+            <div class="card-maskgroup">
+              <img
+                alt="image4I283"
+                src="/assets/lama-pink.svg"
+                class="card-image4"
+              />
+            </div>
+            <img alt="ll5I283" src="/assets/lama-white.svg" class="card-ll5" />
+          </div>
+          <span class="card-text12"><span><%= number_to_currency(listing.price_per_hour) %></span></span>
+          <div class="card-timerclock1">
+            <div class="card-group4">
+              <div class="card-group5">
+                <img
+                  alt="VectorI283"
+                  src="/assets/timer.svg"
+                  class="card-vector8"
+                />
+              </div>
+            </div>
+          </div>
+          <img alt="Line7I283" src="/assets/line.svg" class="card-line7" />
+        </div>
       </div>
     </div>
   </div>
-</div>
+</a>
