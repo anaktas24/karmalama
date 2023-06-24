@@ -11,7 +11,9 @@ class User < ApplicationRecord
         :recoverable, :rememberable, :validatable
   has_one_attached :picture
   # Validations
-  validates :name, :surname, :phone, :birthday, :postal, :area, presence: true
+  validates :name, :surname, :phone, :birthday, :postal, :area, presence: true, unless: :admin?
+  validates :interests, :skillset, :language_skills, :education_level, :work_level, presence: true, unless: :admin?
+
   validates :email, presence: true
   validates_uniqueness_of :email
   #validates :email, uniqueness: true
@@ -32,12 +34,6 @@ class User < ApplicationRecord
   INTEREST_CATEGORIES = ['Movies', 'Sports', 'Music', 'Books', 'Travel'].freeze
   SKILLSET_CATEGORIES = ['Web Development', 'Data Analysis', 'Graphic Design', 'Project Management'].freeze
   LANGUAGE_SKILLS = ['English', 'Spanish', 'French', 'German', 'Chinese'].freeze
-
-  validates :interests, presence: true
-  validates :skillset, presence: true
-  validates :language_skills, presence: true
-  validates :education_level, presence: true
-  validates :work_level, presence: true
 
   has_many :listings, dependent: :destroy
   has_many :bookings, dependent: :destroy

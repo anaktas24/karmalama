@@ -3,10 +3,11 @@ class Admin::AdminController < ApplicationController
 
   def authorize_admin
     unless current_user&.admin?
-      puts "User is not an admin"
-      redirect_to root_path, alert: 'You are not authorized to access this page.'
+      flash[:alert] = 'You are not authorized to access this page.'
+      redirect_to root_path
     end
   end
+
 
   def index
     puts "Inside index action"
