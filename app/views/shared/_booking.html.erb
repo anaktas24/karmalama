@@ -1,266 +1,119 @@
-<div class="card-trip">
-  <div class="col card-component text-decoration-none">
-    <% if listing.photo.attached? %>
-      <%= cl_image_tag listing.photo.key, width: 250, height: 200, crop: :fill %>
-    <% end %>
-  </div>
-  <div class="card ">
-    <div class="card-header card-location-height">
-      <i class="fa-solid fa-location-pin "></i> <%= booking.listing.location %>
-    </div>
-    <div class="card-body card-title-height">
-      <h4 class="card-title"><%= booking.listing.name %></h4>
-    </div>
-    <div class="card-body card-body-height">
-      <p class="card-text card-body-description"><%= booking.listing.description %></p>
-    </div>
-    <div class="card-body card-price-height">
-      <p class="card-text"><i class="fa-sharp fa-solid fa-sack-dollar"></i> Per hour: <br><%= booking.listing.price_per_hour.to_i.round(2) %> CHF</p>
-    </div>
-    <div class="card-body card-price-height">
-      <% if booking.start_date == booking.end_date %>
-        <p class="card-text"><%= booking.start_date.strftime('%d %b %y') %><br>Status: <%= booking.status.capitalize %></p>
-      <% else %>
-        <p class="card-text"><%= booking.start_date.strftime('%d %b') %> - <%= booking.end_date.strftime('%d %b %Y') %><br>Status: <%= booking.status.capitalize %></p>
-      <% end %>
-    </div>
-  </div>
-  <%= link_to '', listing_booking_path(booking.listing, booking), class: 'card-link' %>
-</div>
-
-<%# <div>
-  <link href="./frame9.css" rel="stylesheet" />
-  <div class="frame9-container">
-    <div class="frame9-frame9">
-      <img
-        src="/rectangle419072831-4bwh-400h.png"
-        alt="Rectangle419072831"
-        class="frame9-rectangle41907"
-      />
-      <img
-        src="/rectangle419082831-w99h-400h.png"
-        alt="Rectangle419082831"
-        class="frame9-rectangle41908"
-      />
-      <div class="frame9-group6883">
-        <div class="frame9-heart2">
-          <div class="frame9-group">
-            <div class="frame9-group01">
-              <img
-                src="/heart2831-4khv.svg"
-                alt="heart2831"
-                class="frame9-heart"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="frame9-heart1">
-          <div class="frame9-group02">
-            <div class="frame9-group03">
-              <img
-                src="/vector2831-17vp.svg"
-                alt="Vector2831"
-                class="frame9-vector"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <span class="frame9-text"><span>Gardening for elders</span></span>
-      <div class="frame9-frame3">
-        <div class="frame9-frame1">
-          <span class="frame9-text02"><span>Elders</span></span>
-        </div>
-        <div class="frame9-frame2">
-          <span class="frame9-text04"><span>Gardening</span></span>
-        </div>
-      </div>
-      <img
-        src="/ellipse11882831-pzy-200h.png"
-        alt="Ellipse11882831"
-        class="frame9-ellipse1188"
-      />
-      <div class="frame9-caretleftbackpreviouswest1">
-        <div class="frame9-group04">
-          <div class="frame9-group05">
-            <img
-              src="/vector2831-frw.svg"
-              alt="Vector2831"
-              class="frame9-vector01"
-            />
-          </div>
-        </div>
-      </div>
-      <div class="frame9-group6900">
-        <div class="frame9-group6897">
-          <span class="frame9-text06">
-            <span>02:00pm - Wed, 22 April</span>
-          </span>
-          <div class="frame9-group06">
-            <div class="frame9-group07">
-              <img
-                src="/vector2831-orzj.svg"
-                alt="Vector2831"
-                class="frame9-vector02"
-              />
-              <img
-                src="/vector2831-kg1.svg"
-                alt="Vector2831"
-                class="frame9-vector03"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="frame9-group6899">
-          <span class="frame9-text08"><span>8004 Zürich</span></span>
-          <div class="frame9-group08">
-            <div class="frame9-group09">
-              <img
-                src="/vector2832-kvt9j.svg"
-                alt="Vector2832"
-                class="frame9-vector04"
-              />
-              <img
-                src="/vector2832-4q94.svg"
-                alt="Vector2832"
-                class="frame9-vector05"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="frame9-group6898">
-          <span class="frame9-text10"><span>Vereinigung Cerebral</span></span>
-          <div class="frame9-group10">
-            <div class="frame9-group11">
-              <img
-                src="/vector2832-crce.svg"
-                alt="Vector2832"
-                class="frame9-vector06"
-              />
-              <img
-                src="/vector2832-maos.svg"
-                alt="Vector2832"
-                class="frame9-vector07"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <span class="frame9-text12">
-        <span>
-          Lorem ipsum dolor sit amet consectetur. Lectus iaculis tempor ipsum
-          placerat neque. Fames senectus sed pulvinar mauris eget sed dolor diam
-          ipsum. Tincidunt at in cursus nec dictum ipsum id.
-        </span>
-      </span>
-      <span class="frame9-text14">
-        <span>
-          Lorem ipsum dolor sit amet consectetur. Lectus iaculis tempor ipsum
-          placerat neque. Fames senectus sed pulvinar mauris eget sed dolor diam
-          ipsum. Tincidunt at in cursus nec dictum ipsum id.
-        </span>
-      </span>
-      <div class="frame9-group6903">
-        <div class="frame9-group6901">
-          <span class="frame9-text16"><span>04 hrs</span></span>
-          <div class="frame9-timerclock1">
-            <div class="frame9-group12">
-              <div class="frame9-group13">
+<a href="<%= listing_path(listing) %>">
+  <div>
+    <div class="card-container">
+      <div class="card-component23">
+        <%# <img
+          alt="cardframeI283"
+          src="/cardframei283-a5ig.svg"
+          class="card-cardframe"
+        /> %>
+        <img alt="imageI283" src="" class="card-image" />
+        <div class="card-wishlist">
+          <div class="card-heart1">
+            <div class="card-heartframe">
+              <div class="card-heartframe1">
                 <img
-                  src="/vector2832-b2e8.svg"
-                  alt="Vector2832"
-                  class="frame9-vector08"
-                />
-                <img
-                  src="/vector2832-xwfb.svg"
-                  alt="Vector2832"
-                  class="frame9-vector09"
+                  alt="VectorI283"
+                  src="/assets/heart-white.svg"
+                  class="card-heart"
                 />
               </div>
             </div>
           </div>
         </div>
-        <img src="/line72832-kp6a.svg" alt="Line72832" class="frame9-line7" />
-        <div class="frame9-group6947">
-          <img src="/ll42832-7txs-200h.png" alt="ll42832" class="frame9-ll4" />
-          <img src="/ll62832-tepl-200h.png" alt="ll62832" class="frame9-ll6" />
-          <div class="frame9-maskgroup">
-            <img
-              src="/image42832-93bu-200h.png"
-              alt="image42832"
-              class="frame9-image4"
-            />
+        <div class="card-tags">
+          <div class="card-tag1">
+            <span class="card-text"><span>Elders</span></span>
           </div>
-          <img src="/ll52832-dsdd-200h.png" alt="ll52832" class="frame9-ll5" />
+          <div class="card-tag2">
+            <span class="card-text02"><span>Gardening</span></span>
+          </div>
         </div>
-      </div>
-      <div class="frame9-group6886">
-        <div class="frame9-signupbtn"></div>
-        <span class="frame9-text18"><span>Apply For Listing</span></span>
-      </div>
-      <div class="frame9-group6870">
-        <span class="frame9-text20"><span>Requirements</span></span>
-      </div>
-      <div class="frame9-group6904">
-        <span class="frame9-text22"><span>Company Name</span></span>
-        <span class="frame9-text24">
-          <span>
-            Lorem ipsum dolor sit amet consectetur. Sed nunc quam sit enim.
-            Volutpat posuere velit facilisis placerat iaculis sem elementum.
-            Ipsum.
-          </span>
+        <span class="card-text04"><span><%= listing.name %></span></span>
+        <div class="card-calendar3range1">
+          <div class="card-calendar">
+            <div class="card-group">
+              <img
+                alt="VectorI283"
+                src="/assets/calendar-black.svg"
+                class="card-vector"
+              />
+
+            </div>
+          </div>
+        </div>
+        <span class="card-text06">
+          <span>Mi, 30. Juni 2023, 14:00-18:00</span>
         </span>
-        <div class="frame9-group6905">
-          <img
-            src="/ellipse11862832-cnc7-200h.png"
-            alt="Ellipse11862832"
-            class="frame9-ellipse1186"
-          />
-          <div class="frame9-group14">
-            <img
-              src="/vector2832-r4z3.svg"
-              alt="Vector2832"
-              class="frame9-vector10"
-            />
-            <img
-              src="/vector2832-8l37.svg"
-              alt="Vector2832"
-              class="frame9-vector11"
-            />
-            <img
-              src="/vector2832-9nz4.svg"
-              alt="Vector2832"
-              class="frame9-vector12"
-            />
-            <img
-              src="/vector2832-4lt5.svg"
-              alt="Vector2832"
-              class="frame9-vector13"
-            />
-            <img
-              src="/vector2832-bhr.svg"
-              alt="Vector2832"
-              class="frame9-vector14"
-            />
-            <img
-              src="/vector2832-tk3t.svg"
-              alt="Vector2832"
-              class="frame9-vector15"
-            />
+        <div class="card-locationpinmap2">
+          <div class="card-location">
+            <div class="card-group1">
+              <img
+                alt="VectorI283"
+                src="/assets/location-black.svg"
+                class="card-vector3"
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div class="frame9-caretleftbackpreviouswest2">
-        <div class="frame9-group15">
-          <div class="frame9-group16">
-            <img
-              src="/vector2832-qoip.svg"
-              alt="Vector2832"
-              class="frame9-vector16"
-            />
+        <span class="card-text08">
+          <span><%= listing.location %></span>
+        </span>
+        <div class="card-building">
+          <div class="card-bulding">
+            <div class="card-building1">
+              <img
+                alt="VectorI283"
+                src="/assets/building-black.svg"
+                class="card-vector4"
+              />
+            </div>
           </div>
+        </div>
+        <span class="card-text10"><span>Grüne Stadt Zürich</span></span>
+        <div class="card-lightningthunderfastswift1">
+          <div class="card-group2">
+            <div class="card-group3">
+              <img
+                alt="VectorI283"
+                src="/assets/lightning.svg"
+                class="card-vector6"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="card-timepoints">
+          <img
+            alt="Ellipse1186I283"
+            src="/assets/ellipse.png"
+            class="card-ellipse1186"
+          />
+          <div class="card-group6947">
+            <img alt="ll4I283" src="/assets/lama-white.svg" class="card-ll4" />
+            <div class="card-maskgroup">
+              <img
+                alt="image4I283"
+                src="/assets/lama-pink.svg"
+                class="card-image4"
+              />
+            </div>
+            <img alt="ll5I283" src="/assets/lama-white.svg" class="card-ll5" />
+          </div>
+          <span class="card-text12"><span><%= number_to_currency(listing.price_per_hour) %></span></span>
+          <div class="card-timerclock1">
+            <div class="card-group4">
+              <div class="card-group5">
+                <img
+                  alt="VectorI283"
+                  src="/assets/timer.svg"
+                  class="card-vector8"
+                />
+              </div>
+            </div>
+          </div>
+          <img alt="Line7I283" src="/assets/line.svg" class="card-line7" />
         </div>
       </div>
     </div>
   </div>
-</div> %>
+</a>

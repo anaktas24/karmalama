@@ -47,6 +47,10 @@ class UsersController < ApplicationController
     @language_skills = @user.language_skills
   end
 
+  def my_bookings
+    @bookings = current_user.bookings
+  end
+
   private
 
   def user_params

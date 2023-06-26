@@ -139,7 +139,7 @@
 <div class="card-listing">
   <div class="row gx col">
     <% @listings.each do |listing| %>
-    <div class="col-sm-6 col-md-4 col-lg-3 col" onclick="openListingDetails('<%= listing.id %>')">
+    <div class="col-sm-6 col-md-4 col-lg-3 col">
       <%= render 'shared/card', listing: listing %>
     </div>
     <% end %>

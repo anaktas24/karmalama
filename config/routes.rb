@@ -33,19 +33,14 @@ Rails.application.routes.draw do
   # Listing
   resources :listings, only: [:index, :show] do
     member do
-      post 'apply', to: 'bookings#create'
+      post 'apply', to: 'listings#apply'
     end
-    resources :bookings, only: [:index]
-  end
-
-  resources :bookings, only: [:create, :update] do
-    member do
-      patch 'confirm'
-      patch 'reject'
+    resources :bookings, only: [:index, :create, :update, :destroy] do
+      member do
+        patch 'confirm'
+        patch 'reject'
+      end
     end
   end
-
-
-
 
 end

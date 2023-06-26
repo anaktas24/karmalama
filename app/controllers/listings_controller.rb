@@ -1,6 +1,10 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :apply]
   before_action :authorize_admin, except: [:index, :show, :apply]
+  def new
+    @listing = Listing.new
+    authorize @listing
+  end
 
   def index
     @listings = policy_scope(Listing)
@@ -18,23 +22,8 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     authorize @listing
     @booking = Booking.new
-    @display_apply_modal = false
   end
 
-  def apply
-    @listing = Listing.find(params[:id])
-    authorize @listing
-    @booking = Booking.new
-    @display_apply_modal = true
-    respond_to do |format|
-      format.js { render 'apply' }
-    end
-  end
-
-  def new
-    @listing = Listing.new
-    authorize @listing
-  end
 
   def create
     @listing = Listing.new(listing_params)
@@ -71,16 +60,51 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     authorize @listing
 
-    respond_to do |format|
-      if @listing.destroy
+    if @listing.destroy
+      respond_to do |format|
         format.html { redirect_to listings_path, notice: "Listing was successfully deleted." }
         format.json { head :no_content }
-      else
+      end
+    else
+      respond_to do |format|
         format.html { redirect_to listing_path, status: :unprocessable_entity, notice: "Listing could not be deleted." }
         format.json { render json: @listing.errors, status: :unprocessable_entity }
       end
     end
   end
+
+
+  def apply
+    @listing = Listing.find(params[:id])
+    @booking = Booking.find_by(listing: @listing, user: current_user)
+
+    if @booking
+      # Booking already exists, so it's a cancel action
+      if @booking.destroy
+        redirect_to my_bookings_path, notice: 'Booking canceled successfully.'
+      else
+        redirect_to listings_path, alert: 'Failed to cancel booking.'
+      end
+    else
+      # Booking doesn't exist, so it's an apply action
+      @booking = @listing.bookings.build
+      @booking.user = current_user
+      @booking.status = "pending"
+      @booking.name = @listing.name
+      @booking.description = @listing.description
+      @booking.location = @listing.location
+
+      if @booking.save
+        redirect_to my_bookings_path, notice: 'Listing applied successfully.'
+      else
+        redirect_to listings_path, alert: 'Failed to apply listing.'
+      end
+    end
+  end
+
+
+
+
 
   private
 
@@ -94,10 +118,10 @@ class ListingsController < ApplicationController
     params.require(:listing).permit(:name, :description, :price_per_hour, :location, :photo, :category_type, :date)
   end
 
-  def authorize_admin
-    unless current_user.admin?
-      flash[:error] = "You are not authorized to perform this action."
-      redirect_to listings_path
-    end
-  end
+  # def authorize_admin
+  #   unless current_user.admin?
+  #     flash[:error] = "You are not authorized to perform this action."
+  #     redirect_to listings_path
+  #   end
+  # end
 end

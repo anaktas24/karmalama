@@ -6,25 +6,9 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(listing: @listing)
   end
 
-  def confirm
-    if @booking.update(status: "confirmed")
-      redirect_to action: :show, id: @booking.id
-    else
-      redirect_to action: :show, id: @booking.id
-    end
-  end
-
-  def reject
-    if @booking.update(status: "rejected")
-      redirect_to action: :show, id: @booking.id
-    else
-      redirect_to action: :show, id: @booking.id
-    end
-  end
-
 
   def my_bookings
-    @bookings = policy_scope(Booking)
+    @bookings = current_user.bookings
   end
 
   def show
@@ -37,20 +21,15 @@ class BookingsController < ApplicationController
     @booking = @listing.bookings.build(booking_params)
     @booking.user = current_user
     @booking.status = "pending"
-    authorize @booking
+    # authorize @booking
 
     if @booking.save
-      respond_to do |format|
-        format.html { redirect_to my_bookings_path, notice: "Booking was created and the request has been issued to the listing owner." }
-        format.json { head :no_content }
-      end
+      redirect_to my_bookings_path, notice: 'Listing applied successfully.'
     else
-      respond_to do |format|
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
+      redirect_to listings_path, alert: 'Failed to apply listing.'
     end
   end
+
 
 
   def edit
@@ -79,22 +58,27 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
-    authorize @booking
+    # authorize @booking
+
+    puts "Booking found: #{@booking}"
 
     if @booking.destroy
+      puts "Booking successfully destroyed"
       respond_to do |format|
         format.html { redirect_to my_bookings_path, notice: "Booking was successfully cancelled." }
         format.json { head :no_content }
       end
     else
+      puts "Failed to destroy booking"
       redirect_to my_bookings_path, status: :unprocessable_entity
     end
   end
 
+
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:name, :description, :price_per_hour, :location)
   end
 
   def find_booking
