@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     @listing = Listing.find(params[:listing_id])
     @booking = @listing.bookings.build(booking_params)
     @booking.user = current_user
-    @booking.status = "pending"
+    # @booking.status = "pending"
     # authorize @booking
 
     if @booking.save
@@ -46,7 +46,7 @@ class BookingsController < ApplicationController
       if @booking.update(booking_params)
         format.html { redirect_to my_bookings_path, notice: "Booking was updated and the request has been reissued to the listing owner." }
         format.json { render :show, status: :ok, location: @booking }
-        @booking.status = "pending"
+        # @booking.status = "pending"
         @booking.save
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -61,6 +61,7 @@ class BookingsController < ApplicationController
     # authorize @booking
 
     puts "Booking found: #{@booking}"
+
 
     if @booking.destroy
       puts "Booking successfully destroyed"

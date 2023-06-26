@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   root to: "pages#home"
   get 'my_bookings', to: 'bookings#my_bookings', as: 'my_bookings'
+  delete '/my_bookings/:id', to: 'bookings#destroy', as: 'destroy_booking'
+
+
 
 
   # User
@@ -35,12 +38,13 @@ Rails.application.routes.draw do
     member do
       post 'apply', to: 'listings#apply'
     end
-    resources :bookings, only: [:index, :create, :update, :destroy] do
+    resources :bookings, only: [:index, :create, :update, :destroy, :show] do
       member do
         patch 'confirm'
         patch 'reject'
       end
     end
   end
+
 
 end
