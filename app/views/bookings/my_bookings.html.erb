@@ -1,12 +1,21 @@
 <div class="container">
-
   <h2 class="text-center">My bookings</h2>
 
-  <%# Iterate over bookings for where current_user == Booking.user %>
-
+  <h2 class="text-center">Accepted</h2>
   <div class="row">
     <% @bookings.each do |booking| %>
-      <div class="col-sm-6 col-md-4 col-lg-3"><%= render 'shared/booking', booking: booking, listing: booking.listing %></div>
+      <% if booking.status == 'accepted' %>
+        <div class="col-sm-6 col-md-4 col-lg-3"><%= render 'shared/booking', booking: booking, listing: booking.listing %></div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <h2 class="text-center">Pending</h2>
+  <div class="row">
+    <% @bookings.each do |booking| %>
+      <% if booking.status == 'pending' %>
+        <div class="col-sm-6 col-md-4 col-lg-3"><%= render 'shared/booking', booking: booking, listing: booking.listing %></div>
+      <% end %>
     <% end %>
   </div>
 </div>

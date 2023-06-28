@@ -203,17 +203,10 @@
       <div class="frame9-buttonapply">
         <div class="frame9-signupbtn"></div>
           <span class="frame9-text21"><span>
-            <% if current_user %>
-              <% if !@booking %>
-                <% if @listing.user != current_user %>
-                  <%= button_to "Apply", apply_listing_path(@listing), method: :post, class: "btn btn-primary" %>
-                <% end %>
-              <% else %>
-                <%= button_to "Cancel", my_bookings_path(@booking), method: :delete, data: { confirm: 'Are you sure you want to cancel this booking?' }, class: "btn btn-danger" %>
-              <% end %>
+            <% if @listing.user != current_user %>
+              <% booking_params = { name: @listing.name, description: @listing.description, location: @listing.location, price_per_hour: @listing.price_per_hour } %>
+              <%= button_to "register", listing_bookings_path(@listing, booking: booking_params, apply_type: 'register'), method: :post, id: "apply-button", class: "btn btn-primary"  %>
             <% end %>
-
-
 
 
           </span> <!-- Close the span tag here -->

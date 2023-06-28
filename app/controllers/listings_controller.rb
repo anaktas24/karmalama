@@ -26,15 +26,46 @@ class ListingsController < ApplicationController
 
 
   def create
-    @listing = Listing.new(listing_params)
-    @listing.user = current_user
-    authorize @listing
-    if @listing.save
-      redirect_to listings_path
+    @listing = Listing.find(params[:id])
+    @booking = Booking.find_by(listing: @listing, user: current_user)
+
+    if @booking
+      # Booking already exists, so it's a cancel action
+      if @booking.destroy
+        redirect_to my_bookings_path, notice: 'Booking canceled successfully.'
+      else
+        redirect_to listings_path, alert: 'Failed to cancel booking.'
+      end
     else
-      render :new, status: :unprocessable_entity
+      # Booking doesn't exist, so it's an apply or register action
+      @booking = @listing.bookings.build
+      @booking.user = current_user
+      @booking.name = @listing.name
+      @booking.description = @listing.description
+      @booking.location = @listing.location
+
+      if params[:apply_type] == 'apply'
+        @booking.status = 'pending'
+      elsif params[:apply_type] == 'register'
+        @booking.status = 'confirmed'
+      else
+        redirect_to listings_path, alert: 'Invalid application type.'
+        return
+      end
+
+      if @booking.save
+        if @booking.status == 'pending'
+          redirect_to my_bookings_path(section: 'pending'), notice: 'Listing applied successfully. It is now pending confirmation.'
+        else
+          redirect_to my_bookings_path, notice: 'Listing applied successfully. Please complete your registration.'
+        end
+      else
+        redirect_to listings_path, alert: 'Failed to apply listing.'
+      end
     end
   end
+
+
 
   def edit
     @listing = Listing.find(params[:id])
@@ -72,39 +103,6 @@ class ListingsController < ApplicationController
       end
     end
   end
-
-
-  def apply
-    @listing = Listing.find(params[:id])
-    @booking = Booking.find_by(listing: @listing, user: current_user)
-
-    if @booking
-      # Booking already exists, so it's a cancel action
-      if @booking.destroy
-        redirect_to my_bookings_path, notice: 'Booking canceled successfully.'
-      else
-        redirect_to listings_path, alert: 'Failed to cancel booking.'
-      end
-    else
-      # Booking doesn't exist, so it's an apply action
-      @booking = @listing.bookings.build
-      @booking.user = current_user
-      @booking.status = "pending"
-      @booking.name = @listing.name
-      @booking.description = @listing.description
-      @booking.location = @listing.location
-
-      if @booking.save
-        redirect_to my_bookings_path, notice: 'Listing applied successfully.'
-      else
-        redirect_to listings_path, alert: 'Failed to apply listing.'
-      end
-    end
-  end
-
-
-
-
 
   private
 

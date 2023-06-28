@@ -5,11 +5,6 @@ Rails.application.routes.draw do
   }
 
   root to: "pages#home"
-  get 'my_bookings', to: 'bookings#my_bookings', as: 'my_bookings'
-  delete '/my_bookings/:id', to: 'bookings#destroy', as: 'destroy_booking'
-
-
-
 
   # User
   get '/profile', to: 'users#profile', as: 'profile'
@@ -32,12 +27,8 @@ Rails.application.routes.draw do
   #   delete '/listings/:id', to: 'admin#destroy_listing', as: 'destroy_listing'
   # end
 
-
   # Listing
   resources :listings, only: [:index, :show] do
-    member do
-      post 'apply', to: 'listings#apply'
-    end
     resources :bookings, only: [:index, :create, :update, :destroy, :show] do
       member do
         patch 'confirm'
@@ -46,5 +37,7 @@ Rails.application.routes.draw do
     end
   end
 
-
+  get 'my_bookings', to: 'bookings#my_bookings', as: 'my_bookings'
+  get 'my_bookings/:id', to: 'bookings#show', as: 'booking'
+  delete '/my_bookings/:id', to: 'bookings#destroy', as: 'destroy_booking'
 end

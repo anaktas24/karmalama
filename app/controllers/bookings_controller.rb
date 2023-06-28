@@ -58,13 +58,10 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
-    # authorize @booking
-
-    puts "Booking found: #{@booking}"
-
-
+    puts "Booking ID: #{params[:id]}" # Output the value of params[:id] to the console
+    logger.info("Booking ID: #{params[:id]}")
     if @booking.destroy
-      puts "Booking successfully destroyed"
+      puts "Booking destroyed successfully"
       respond_to do |format|
         format.html { redirect_to my_bookings_path, notice: "Booking was successfully cancelled." }
         format.json { head :no_content }
