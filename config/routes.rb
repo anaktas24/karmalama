@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   # end
 
   # Listing
-  resources :listings, only: [:index, :show] do
+  resources :listings, only: [:show] do
     resources :bookings, only: [:index, :create, :update, :destroy, :show] do
       member do
         patch 'accepted'

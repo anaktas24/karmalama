@@ -24,9 +24,8 @@ class ListingsController < ApplicationController
     @booking = Booking.new
   end
 
-
   def create
-    @listing = Listing.find(params[:id])
+    @listing = Listing.find(params[:listing_id])
     @booking = Booking.find_by(listing: @listing, user: current_user)
 
     if @booking
@@ -34,7 +33,7 @@ class ListingsController < ApplicationController
       if @booking.destroy
         redirect_to my_bookings_path, notice: 'Booking canceled successfully.'
       else
-        redirect_to listings_path, alert: 'Failed to cancel booking.'
+        redirect_to my_bookings_path, alert: 'Failed to cancel booking.'
       end
     else
       # Booking doesn't exist, so it's an apply or register action
@@ -49,18 +48,17 @@ class ListingsController < ApplicationController
       elsif params[:apply_type] == 'register'
         @booking.status = 'accepted'
       else
-        redirect_to listings_path, alert: 'Invalid application type.'
+        redirect_to my_bookings_path, alert: 'Invalid application type.'
         return
       end
 
       if @booking.save
         redirect_to my_bookings_path, notice: 'Booking created successfully.'
       else
-        redirect_to listings_path, alert: 'Failed to create booking.'
+        redirect_to my_bookings_path, alert: 'Failed to create booking.'
       end
     end
   end
-
 
   def edit
     @listing = Listing.find(params[:id])
@@ -73,7 +71,7 @@ class ListingsController < ApplicationController
 
     respond_to do |format|
       if @listing.update(listing_params)
-        format.html { redirect_to listings_path, notice: "Listing was successfully updated." }
+        format.html { redirect_to my_bookings_path, notice: "Listing was successfully updated." }
         format.json { render :show, status: :ok, location: @listing }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -88,12 +86,12 @@ class ListingsController < ApplicationController
 
     if @listing.destroy
       respond_to do |format|
-        format.html { redirect_to listings_path, notice: "Listing was successfully deleted." }
+        format.html { redirect_to my_bookings_path, notice: "Listing was successfully deleted." }
         format.json { head :no_content }
       end
     else
       respond_to do |format|
-        format.html { redirect_to listing_path, status: :unprocessable_entity, notice: "Listing could not be deleted." }
+        format.html { redirect_to my_bookings_path, status: :unprocessable_entity, notice: "Listing could not be deleted." }
         format.json { render json: @listing.errors, status: :unprocessable_entity }
       end
     end
@@ -105,16 +103,7 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
   end
 
-
-
   def listing_params
     params.require(:listing).permit(:name, :description, :price_per_hour, :location, :photo, :category_type, :date)
   end
-
-  # def authorize_admin
-  #   unless current_user.admin?
-  #     flash[:error] = "You are not authorized to perform this action."
-  #     redirect_to listings_path
-  #   end
-  # end
 end
