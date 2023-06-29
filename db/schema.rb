@@ -51,7 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_26_124706) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status"
+    t.string "status", default: "pending"
     t.string "name"
     t.text "description"
     t.string "location"
