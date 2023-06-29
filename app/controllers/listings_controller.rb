@@ -47,24 +47,19 @@ class ListingsController < ApplicationController
       if params[:apply_type] == 'apply'
         @booking.status = 'pending'
       elsif params[:apply_type] == 'register'
-        @booking.status = 'confirmed'
+        @booking.status = 'accepted'
       else
         redirect_to listings_path, alert: 'Invalid application type.'
         return
       end
 
       if @booking.save
-        if @booking.status == 'pending'
-          redirect_to my_bookings_path(section: 'pending'), notice: 'Listing applied successfully. It is now pending confirmation.'
-        else
-          redirect_to my_bookings_path, notice: 'Listing applied successfully. Please complete your registration.'
-        end
+        redirect_to my_bookings_path, notice: 'Booking created successfully.'
       else
-        redirect_to listings_path, alert: 'Failed to apply listing.'
+        redirect_to listings_path, alert: 'Failed to create booking.'
       end
     end
   end
-
 
 
   def edit

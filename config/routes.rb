@@ -31,8 +31,8 @@ Rails.application.routes.draw do
   resources :listings, only: [:index, :show] do
     resources :bookings, only: [:index, :create, :update, :destroy, :show] do
       member do
-        patch 'confirm'
-        patch 'reject'
+        patch 'accepted'
+        patch 'pending'
       end
     end
   end

@@ -1,18 +1,36 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [:show, :confirm, :reject]
+  before_action :find_booking, only: [:show, :accept, :reject, :pending]
 
   def index
     @listing = Listing.find(params[:listing_id])
     @bookings = Booking.where(listing: @listing)
+    @accepted_bookings = @bookings.where(status: 'accepted')
+    @pending_bookings = @bookings.where(status: 'pending')
   end
+
+  def accept
+    @booking = Booking.find(params[:id])
+    @booking.update(status: 'accepted')
+    redirect_to my_bookings_path, notice: 'Booking accepted successfully.'
+  end
+
+
+  def pending
+    @booking = Booking.find(params[:id])
+    @booking.update(status: 'pending')
+    redirect_to my_bookings_path, notice: 'Booking set to pending successfully.'
+  end
+
+
 
 
   def my_bookings
     @bookings = current_user.bookings
+    @accepted_bookings = @bookings.where(status: 'accepted')
+    @pending_bookings = @bookings.where(status: 'pending')
   end
 
   def show
-    authorize @booking
     @listing = @booking.listing
   end
 
@@ -20,8 +38,6 @@ class BookingsController < ApplicationController
     @listing = Listing.find(params[:listing_id])
     @booking = @listing.bookings.build(booking_params)
     @booking.user = current_user
-    # @booking.status = "pending"
-    # authorize @booking
 
     if @booking.save
       redirect_to my_bookings_path, notice: 'Listing applied successfully.'
