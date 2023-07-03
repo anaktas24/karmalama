@@ -1,12 +1,10 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [:show, :accept, :reject]
+  before_action :find_booking, only: [:show, :accept, :reject, :pending, :completed]
 
   def index
     @listing = Listing.find(params[:listing_id])
     @bookings = Booking.where(listing: @listing)
   end
-
-
 
   def my_bookings
     @bookings = current_user.bookings
@@ -29,8 +27,6 @@ class BookingsController < ApplicationController
       redirect_to my_bookings_path, alert: 'Failed to apply listing.'
     end
   end
-
-
 
   def edit
     @booking = Booking.find(params[:id])
@@ -72,11 +68,23 @@ class BookingsController < ApplicationController
     end
   end
 
+  #Impact
+  def complete_booking
+    if @booking.status == 'completed'
+      flash[:notice] = 'Booking already completed.'
+    else
+      @booking.update(status: 'completed')
+      current_user.update(points: current_user.points + POINTS_PER_BOOKING)
+      flash[:notice] = "Booking completed. You have been awarded #{POINTS_PER_BOOKING} points."
+    end
+
+    redirect_to booking_path(@booking)
+  end
 
   private
 
   def booking_params
-    params.require(:booking).permit(:name, :description, :price_per_hour, :location)
+    params.require(:booking).permit(:name, :description, :points, :location)
   end
 
   def find_booking
