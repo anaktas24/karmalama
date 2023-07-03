@@ -1,2 +1,8 @@
-<h1>Impact#index</h1>
-<p>Find me in app/views/impact/index.html.erb</p>
+<h1>Impact Page</h1>
+<% @levels.each do |level| %>
+  <div>
+    <h2>Level <%= level.number %></h2>
+    <p>Points required: <%= level.points %></p>
+    <%= image_tag level.image %>
+  </div>
+<% end %>
