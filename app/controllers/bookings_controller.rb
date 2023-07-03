@@ -4,8 +4,6 @@ class BookingsController < ApplicationController
   def index
     @listing = Listing.find(params[:listing_id])
     @bookings = Booking.where(listing: @listing)
-    @accepted_bookings = @bookings.where(status: 'accepted')
-    @pending_bookings = @bookings.where(status: 'pending')
   end
 
 
@@ -21,10 +19,9 @@ class BookingsController < ApplicationController
 
   def create
     @listing = Listing.find(params[:listing_id])
-    @booking = @listing.bookings.build(booking_params)
-    @booking.user = current_user
-    # @booking.status = "pending"
-    # authorize @booking
+    @booking = @listing.bookings.new(booking_params)
+    @booking.user_id = current_user.id
+    @booking.status = params[:commit] == 'Apply' ? 'Pending' : 'Accepted'
 
     if @booking.save
       redirect_to my_bookings_path, notice: 'Listing applied successfully.'

@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
   before_action :authorize_admin, except: [:index, :show, :apply]
   def new
     @listing = Listing.new
-    authorize @listing
+
   end
 
   def index
@@ -20,7 +20,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
-    authorize @listing
+
     @booking = Booking.new
   end
 
@@ -43,15 +43,6 @@ class ListingsController < ApplicationController
       @booking.description = @listing.description
       @booking.location = @listing.location
 
-      if params[:apply_type] == 'apply'
-        @booking.status = 'pending'
-      elsif params[:apply_type] == 'register'
-        @booking.status = 'accepted'
-      else
-        redirect_to my_bookings_path, alert: 'Invalid application type.'
-        return
-      end
-
       if @booking.save
         redirect_to my_bookings_path, notice: 'Booking created successfully.'
       else
@@ -62,12 +53,12 @@ class ListingsController < ApplicationController
 
   def edit
     @listing = Listing.find(params[:id])
-    authorize @listing
+
   end
 
   def update
     @listing = Listing.find(params[:id])
-    authorize @listing
+
 
     respond_to do |format|
       if @listing.update(listing_params)
@@ -82,7 +73,7 @@ class ListingsController < ApplicationController
 
   def destroy
     @listing = Listing.find(params[:id])
-    authorize @listing
+
 
     if @listing.destroy
       respond_to do |format|

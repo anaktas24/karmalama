@@ -1,10 +1,9 @@
 <div class="container">
   <h2 class="text-center">My bookings</h2>
-
   <h2 class="text-center">Accepted</h2>
   <div class="row">
-    <% @accepted_bookings.each do |booking| %>
-      <% if booking.status == 'accepted' %>
+    <% @bookings.each do |booking| %>
+      <% if booking.status == 'Accepted' %>
         <%= render 'shared/booking', booking: booking, listing: booking.listing %>
       <% end %>
     <% end %>
@@ -12,8 +11,8 @@
 
   <h2 class="text-center">Pending</h2>
   <div class="row">
-    <% @pending_bookings.each do |booking| %>
-      <% if booking.status == 'pending' %>
+    <% @bookings.each do |booking| %>
+      <% if booking.status == 'Pending' %>
         <%= render 'shared/booking', booking: booking, listing: booking.listing %>
       <% end %>
     <% end %>

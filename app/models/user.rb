@@ -10,6 +10,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
   has_one_attached :picture
+  has_many :bookings
   # Validations
   validates :name, :surname, :phone, :birthday, :postal, :area, presence: true, unless: :admin?
   validates :interests, :skillset, :language_skills, :education_level, :work_level, presence: true, unless: :admin?

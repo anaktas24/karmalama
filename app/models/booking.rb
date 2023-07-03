@@ -1,4 +1,5 @@
 class Booking < ApplicationRecord
+  validates :status, inclusion: { in: ['Pending', 'Accepted', 'Rejected'] }
   belongs_to :listing
   belongs_to :user
 
@@ -7,6 +8,5 @@ class Booking < ApplicationRecord
   validates :location, presence: true
   validates :price_per_hour, presence: true
 
-  validates :status, presence: true, inclusion: { in: %w(accepted pending) }
-
+  validates :status, presence: true, inclusion: { in: ['Pending', 'Accepted', 'Rejected'] }
 end
