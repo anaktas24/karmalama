@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'impact/index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions'
@@ -36,7 +37,7 @@ Rails.application.routes.draw do
       end
     end
   end
-
+  get 'impact', to: 'impact#index', as: 'impact'
   get 'my_bookings', to: 'bookings#my_bookings', as: 'my_bookings'
   get 'my_bookings/:id', to: 'bookings#show', as: 'booking'
   delete '/my_bookings/:id', to: 'bookings#destroy', as: 'destroy_booking'

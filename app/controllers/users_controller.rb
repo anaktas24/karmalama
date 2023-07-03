@@ -51,7 +51,24 @@ class UsersController < ApplicationController
     @bookings = current_user.bookings
   end
 
+  #Impact Page
+
+  def update_level
+    self.level = calculate_level
+    self.picture = calculate_picture
+    save
+  end
+
+
   private
+
+  def calculate_level
+    # Logic to determine the user's level based on points
+  end
+
+  def calculate_picture
+    # Logic to determine the user's picture based on level
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :phone, { interests: [], skillset: [], language_skills: [] },
