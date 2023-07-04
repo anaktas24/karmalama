@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
     @booking.status = params[:commit] == 'Apply' ? 'Pending' : 'Accepted'
 
     if @booking.save
-      redirect_to my_bookings_path, notice: 'Listing applied successfully.'
+      redirect_to my_bookings_path, notice: 'Listing applied successfully.' #change to alert
     else
       redirect_to my_bookings_path, alert: 'Failed to apply listing.'
     end
