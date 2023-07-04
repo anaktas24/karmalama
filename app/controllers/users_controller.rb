@@ -64,6 +64,16 @@ class UsersController < ApplicationController
     update(level: level)
   end
 
+  def get_user_level(points)
+    return 1 if points.nil?
+
+    LEVEL_POINTS_MAPPING.each do |level, required_points|
+      return level if points >= required_points
+    end
+
+    return 1 # Default level is 1 if no matching level is found
+  end
+
 
   private
 

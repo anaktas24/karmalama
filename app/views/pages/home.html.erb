@@ -25,7 +25,7 @@
       <span class="frame71-text42">
         <% if user_signed_in? %>
           <p>Welcome, <strong><%= current_user.name %>!</strong></p>
-          <p><%= image_tag 'diamond.png' %> Level <%=current_user.level %></p>
+          <p><%= image_tag 'diamond.png' %> Level <%= current_user.level || 1 %></p>
         <% else %>
           <span class="frame71-text43">Finde</span>
           <span class="frame71-text44">Unterstützungsmöglichkeiten</span>
