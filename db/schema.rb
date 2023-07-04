@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_03_142026) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_04_120906) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -114,8 +114,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_03_142026) do
     t.text "language_skills"
     t.integer "education_level"
     t.integer "work_level"
-    t.integer "points"
-    t.integer "level"
+    t.integer "points", default: 0
+    t.integer "level", default: 1
+    t.integer "hours_worked"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

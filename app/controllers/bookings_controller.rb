@@ -74,8 +74,11 @@ class BookingsController < ApplicationController
       flash[:notice] = 'Booking already completed.'
     else
       @booking.update(status: 'completed')
-      current_user.update(points: current_user.points + POINTS_PER_BOOKING)
-      flash[:notice] = "Booking completed. You have been awarded #{POINTS_PER_BOOKING} points."
+      current_user.increment!(points: current_user.points + @booking.points)
+      current_user.increment!(:hours_worked, @booking.hours)
+      flash[:notice] = "Booking completed. You have been awarded #{@booking.points} points."
+
+      current_user.update_level # Call the update_level method to update the user's level
     end
 
     redirect_to booking_path(@booking)

@@ -1,3 +1,4 @@
+require 'yaml'
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:profile]
 
@@ -54,9 +55,13 @@ class UsersController < ApplicationController
   #Impact Page
 
   def update_level
-    self.level = calculate_level
-    self.picture = calculate_picture
-    save
+    level = 1
+    level_points_mapping = YAML.load_file(Rails.root.join('config', 'levels.yml'))
+    level_points_mapping.each do |mapping|
+      break if self.points < mapping['points_required']
+      level = mapping['level']
+    end
+    update(level: level)
   end
 
 

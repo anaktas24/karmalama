@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
+    @level = current_user.level || 1
+
     # if user_signed_in?
       # @default_radius = 50
       # @listings = Listing.near([current_user.latitude, current_user.longitude], @default_radius, order: 'distance').limit(24)

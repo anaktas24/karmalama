@@ -1,11 +1,31 @@
 class User < ApplicationRecord
   attr_accessor :step
+  after_create :set_default_values
+
+  def set_default_values
+    self.points = 0
+    self.level = 1
+    self.hours_worked = 0
+    save
+  end
 
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
 
   # Associations
   has_one_attached :picture
+  has_many :levels
+  def set_initial_level
+    self.update(level: 1)
+  end
+
+  def current_level
+    Level.where("points <= ?", points).order(points: :desc).first
+    update(level: level.number)
+  end
+
+
+
   has_many :listings, dependent: :destroy
   has_many :bookings, dependent: :destroy
   attribute :about_me, :text
@@ -13,8 +33,8 @@ class User < ApplicationRecord
   validates :level, numericality: { greater_than_or_equal_to: 1 }
 
   # Validations
-  validates :name, :surname, :phone, :birthday, :postal, :area, presence: true, unless: :admin?
-  validates :interests, :skillset, :language_skills, :education_level, :work_level, presence: true, unless: :admin?
+  validates :name, :surname, :phone, :birthday, :postal, :area, presence: true
+  validates :interests, :skillset, :language_skills, :education_level, :work_level, presence: true
   validates :email, presence: true
   validates_uniqueness_of :email
   validates :password, presence: true, length: { minimum: 6 }, if: :password_required?

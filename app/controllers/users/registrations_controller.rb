@@ -29,12 +29,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     when 3
       if session[:user_step1_params].is_a?(Hash)
         @user = User.new(session[:user_step1_params].merge(user_params))
+        @user.points = 0
+        @user.level = 1
         if @user.valid?
           @user.save
           session[:user_step1_params] = nil
           sign_in(@user)
           redirect_to root_path
         else
+          puts @user.errors.full_messages
           render 'step3'
         end
       else

@@ -17,4 +17,13 @@
       <% end %>
     <% end %>
   </div>
+
+   <h2 class="text-center">Completed</h2>
+  <div class="row">
+    <% @bookings.each do |booking| %>
+      <% if booking.status == 'Completed' %>
+        <%= render 'shared/booking', booking: booking, listing: booking.listing %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
